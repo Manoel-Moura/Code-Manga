@@ -2,7 +2,7 @@
 
 Projet criado durante a matéria de Programação IV - Bloco V - UESPI
 
-## Tecnologias
+## Tecnologias utilizadas
 
 - Dart
 - Flutter
