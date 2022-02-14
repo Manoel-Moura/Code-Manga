@@ -1,0 +1,28 @@
+import 'package:flutter/material.dart';
+import 'package:code_manga/consts/colors/colors.dart';
+import 'package:code_manga/consts/colors/colors.dart';
+
+class Button extends StatelessWidget {
+  final String text;
+  const Button({Key? key, required this.text}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return TextButton(
+      onPressed: () {},
+      child: Text(
+        text,
+        style: TextStyle(
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+      style: TextButton.styleFrom(
+        primary: KText,
+        backgroundColor: kprimaryColor,
+        // elevation: 20,
+        minimumSize: Size(800, 60),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+      ),
+    );
+  }
+}

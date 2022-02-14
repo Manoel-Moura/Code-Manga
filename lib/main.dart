@@ -1,9 +1,9 @@
-//Inicio de um sonho!
-import 'package:flutter/cupertino.dart';
+import 'package:code_manga/screens/loginPage.dart';
+import 'package:code_manga/screens/cadastroPage.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -12,6 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.grey),
       home: CodeManga(),
     );
@@ -28,6 +29,7 @@ class CodeManga extends StatefulWidget {
 class _CodeMangaState extends State<CodeManga> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return cadastro();
+    //return loginPage();
   }
 }
