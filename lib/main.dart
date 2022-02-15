@@ -29,7 +29,7 @@ class CodeManga extends StatefulWidget {
 class _CodeMangaState extends State<CodeManga> {
   @override
   Widget build(BuildContext context) {
-    return cadastro();
-    //return loginPage();
+    //return cadastro();
+    return loginPage();
   }
 }

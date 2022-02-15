@@ -1,6 +1,7 @@
 // import 'dart:html';
 
 import 'package:code_manga/consts/colors/colors.dart';
+import 'package:code_manga/screens/cadastroPage.dart';
 import 'package:code_manga/widgets/input.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -92,7 +93,10 @@ class _loginPageState extends State<loginPage> {
                           style: TextStyle(color: KText),
                         ),
                         TextButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => cadastro()));
+                            },
                             child: Text(
                               'Cadastra-se',
                               style: TextStyle(color: kprimaryColor),
