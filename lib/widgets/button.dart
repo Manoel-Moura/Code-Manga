@@ -12,9 +12,7 @@ class Button extends StatelessWidget {
       onPressed: () {},
       child: Text(
         text,
-        style: TextStyle(
-          fontWeight: FontWeight.bold,
-        ),
+        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18.0),
       ),
       style: TextButton.styleFrom(
         primary: KText,
