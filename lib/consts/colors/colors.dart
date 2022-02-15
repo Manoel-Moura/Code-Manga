@@ -7,4 +7,4 @@ const Color kBackgroundColor = Colors.black;
 const Color kIcon = Color(0XFF1E2841);
 const Color KText = Color(0XFFE9ECEE);
 const Color KAppBar = Color(0XFF020202);
-const Color KAppBar2 = Color(0xFF4d4d4b);
+const Color KAppBar2 = Color(0xFF1F1F1F);
