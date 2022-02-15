@@ -1,4 +1,4 @@
-import 'dart:html';
+// import 'dart:html';
 
 import 'package:code_manga/consts/colors/colors.dart';
 import 'package:code_manga/widgets/input.dart';
@@ -16,7 +16,7 @@ class cadastro extends StatefulWidget {
 class _cadastroState extends State<cadastro> {
   @override
   Widget build(BuildContext context) {
-    return Scrollbar(
+    return SafeArea(
       child: Scaffold(
         backgroundColor: kBackgroundColor,
         body: Column(
@@ -24,7 +24,7 @@ class _cadastroState extends State<cadastro> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              margin: const EdgeInsets.only(bottom: 56),
+              margin: const EdgeInsets.only(bottom: 25),
               child: Center(
                 child: Column(
                   children: [
@@ -54,7 +54,7 @@ class _cadastroState extends State<cadastro> {
                 "Cadrastro",
                 style: GoogleFonts.notoSans(
                   fontWeight: FontWeight.bold,
-                  fontSize: 40,
+                  fontSize: 30,
                   color: KText,
                 ),
               ),
@@ -65,7 +65,7 @@ class _cadastroState extends State<cadastro> {
               child: Column(
                 children: [
                   Padding(
-                    padding: EdgeInsets.only(bottom: 25),
+                    padding: EdgeInsets.only(bottom: 15),
                     child: Input(
                       icone: Icons.person,
                       texto: "Digite seu nome",
@@ -73,7 +73,7 @@ class _cadastroState extends State<cadastro> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(bottom: 25),
+                    padding: EdgeInsets.only(bottom: 15),
                     child: Input(
                       icone: Icons.person,
                       texto: "Digite sua idade",
@@ -81,7 +81,7 @@ class _cadastroState extends State<cadastro> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(bottom: 25),
+                    padding: EdgeInsets.only(bottom: 15),
                     child: Input(
                       icone: Icons.email_rounded,
                       texto: "Digite seu email",
@@ -89,7 +89,7 @@ class _cadastroState extends State<cadastro> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(bottom: 25),
+                    padding: EdgeInsets.only(bottom: 15),
                     child: Input(
                       icone: Icons.lock,
                       texto: "Digite sua senha",
