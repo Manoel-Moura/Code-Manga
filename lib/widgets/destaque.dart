@@ -19,7 +19,7 @@ class _DestaqueState extends State<Destaque> {
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width,
-      height: (MediaQuery.of(context).size.height) / 2,
+      height: (MediaQuery.of(context).size.height) / 2.5,
       child: Stack(
         children: [
           Image.network(
