@@ -1,3 +1,4 @@
+import 'package:code_manga/screens/homePage.dart';
 import 'package:code_manga/screens/loginPage.dart';
 import 'package:code_manga/screens/cadastroPage.dart';
 import 'package:flutter/material.dart';
@@ -29,7 +30,8 @@ class CodeManga extends StatefulWidget {
 class _CodeMangaState extends State<CodeManga> {
   @override
   Widget build(BuildContext context) {
-    return cadastro();
+    //return cadastro();
     //return loginPage();
+    return HomePage();
   }
 }
