@@ -26,6 +26,16 @@ class _HomePageState extends State<HomePage> {
       child: Scaffold(
         backgroundColor: Color.fromRGBO(31, 31, 31, 0.9),
         appBar: AppBar(
+          leading: IconButton(
+            onPressed: () {
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => loginPage()));
+            },
+            icon: Icon(
+              Icons.arrow_back,
+              color: KText,
+            ),
+          ),
           flexibleSpace: Container(
             decoration: const BoxDecoration(
               gradient: LinearGradient(
@@ -55,28 +65,17 @@ class _HomePageState extends State<HomePage> {
               ),
             ],
           ),
-          leading: IconButton(
-            onPressed: () {
-              Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => loginPage()));
-            },
-            icon: Icon(
-              Icons.arrow_back,
-              color: KText,
-            ),
-          ),
           actions: [
             Padding(
-              padding: EdgeInsets.only(right: 35.0),
-              child: GestureDetector(
-                onTap: () {},
-                child: Icon(
-                  Icons.search,
-                  color: KText,
-                  size: 26.0,
-                ),
-              ),
-            ),
+                padding: EdgeInsets.only(right: 35.0),
+                child: GestureDetector(
+                  onTap: () {},
+                  child: Icon(
+                    Icons.search,
+                    color: KText,
+                    size: 26.0,
+                  ),
+                )),
           ],
         ),
         body: SingleChildScrollView(

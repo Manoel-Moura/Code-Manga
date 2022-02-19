@@ -3,7 +3,7 @@ import 'package:code_manga/screens/cadastroPage.dart';
 import 'package:code_manga/screens/resum.dart';
 import 'package:code_manga/widgets/categoria.dart';
 import 'package:code_manga/widgets/avatar.dart';
-import 'package:code_manga/widgets/input.dart';
+
 import 'package:flutter/material.dart';
 //import 'package:google_fonts/google_fonts.dart';
 import 'package:code_manga/widgets/button.dart';
