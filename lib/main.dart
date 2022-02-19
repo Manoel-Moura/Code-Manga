@@ -7,7 +7,9 @@ import 'package:code_manga/API/buscarId.dart';
 import 'package:code_manga/API/buscaNome.dart';
 
 void main() async {
-  printMangas("naruto");
+  // printMangas("naruto");
+  Data manga = getManga(8) as Data;
+  print(manga.title);
 
   runApp(const MyApp());
 }

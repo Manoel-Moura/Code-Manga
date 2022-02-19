@@ -20,3 +20,8 @@ void printMangaId(int id) async {
   MangaApiModel manga = await buscaUmMangaId(id);
   print('O ${manga.data!.title} esta no rank ${manga.data!.rank}');
 }
+
+Future<MangaApiModel> getManga(int id) async {
+  MangaApiModel manga = await buscaUmMangaId(id);
+  return manga;
+}
