@@ -8,8 +8,8 @@ import 'package:code_manga/API/buscaNome.dart';
 
 void main() async {
   // printMangas("naruto");
-  Data manga = getManga(8) as Data;
-  print(manga.title);
+  // Data manga = getManga(8) as Data;
+  // print(manga.title);
 
   runApp(const MyApp());
 }
