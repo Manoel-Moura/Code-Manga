@@ -1,3 +1,4 @@
+import 'package:code_manga/screens/homePage.dart';
 import 'package:flutter/material.dart';
 import 'package:code_manga/consts/colors/colors.dart';
 import 'package:code_manga/consts/colors/colors.dart';
@@ -9,7 +10,10 @@ class Button extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextButton(
-      onPressed: () {},
+      onPressed: () {
+        Navigator.of(context)
+            .push(MaterialPageRoute(builder: (context) => HomePage()));
+      },
       child: Text(
         text,
         style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18.0),

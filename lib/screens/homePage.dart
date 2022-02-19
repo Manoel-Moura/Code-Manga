@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:code_manga/consts/colors/colors.dart';
 import 'package:code_manga/screens/cadastroPage.dart';
+import 'package:code_manga/screens/loginPage.dart';
 import 'package:code_manga/widgets/categoria.dart';
 import 'package:code_manga/widgets/avatar.dart';
 import 'package:code_manga/widgets/destaque.dart';
@@ -54,17 +55,28 @@ class _HomePageState extends State<HomePage> {
               ),
             ],
           ),
+          leading: IconButton(
+            onPressed: () {
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => loginPage()));
+            },
+            icon: Icon(
+              Icons.arrow_back,
+              color: KText,
+            ),
+          ),
           actions: [
             Padding(
-                padding: EdgeInsets.only(right: 35.0),
-                child: GestureDetector(
-                  onTap: () {},
-                  child: Icon(
-                    Icons.search,
-                    color: KText,
-                    size: 26.0,
-                  ),
-                )),
+              padding: EdgeInsets.only(right: 35.0),
+              child: GestureDetector(
+                onTap: () {},
+                child: Icon(
+                  Icons.search,
+                  color: KText,
+                  size: 26.0,
+                ),
+              ),
+            ),
           ],
         ),
         body: SingleChildScrollView(
