@@ -1,66 +1,48 @@
-import 'package:code_manga/screens/homePage.dart';
-import 'package:code_manga/screens/loginPage.dart';
-import 'package:code_manga/screens/cadastroPage.dart';
-import 'package:code_manga/screens/navHomePage.dart';
-import 'package:code_manga/screens/resum.dart';
-
-import 'package:flutter/material.dart';
-import 'package:code_manga/API/buscarId.dart';
-import 'package:code_manga/API/buscaNome.dart';
-
-void main() async {
-  // printMangas("naruto");
-  // Data manga = getManga(8) as Data;
-  // print(manga.title);
-
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(primarySwatch: Colors.grey),
-      home: CodeManga(),
-    );
-  }
-}
-
-class CodeManga extends StatefulWidget {
-  const CodeManga({Key? key}) : super(key: key);
-
-  @override
-  _CodeMangaState createState() => _CodeMangaState();
-}
-
-class _CodeMangaState extends State<CodeManga> {
-  @override
-  Widget build(BuildContext context) {
-    //return cadastro();
-    //return loginPage();
-    //return Resum();
-    //return HomePage();
-    return NavHome();
-  }
-}
-
 class MangaApiModel {
-  Data? data;
+  Pagination? pagination;
+  List<Data>? data;
 
-  MangaApiModel({this.data});
+  MangaApiModel({this.pagination, this.data});
 
   MangaApiModel.fromJson(Map<String, dynamic> json) {
-    data = json['data'] != null ? new Data.fromJson(json['data']) : null;
+    pagination = json['pagination'] != null
+        ? new Pagination.fromJson(json['pagination'])
+        : null;
+    if (json['data'] != null) {
+      data = <Data>[];
+      json['data'].forEach((v) {
+        data!.add(new Data.fromJson(v));
+      });
+    }
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.data != null) {
-      data['data'] = this.data!.toJson();
+    if (this.pagination != null) {
+      data['pagination'] = this.pagination!.toJson();
     }
+    if (this.data != null) {
+      data['data'] = this.data!.map((v) => v.toJson()).toList();
+    }
+    return data;
+  }
+}
+
+class Pagination {
+  int? lastVisiblePage;
+  bool? hasNextPage;
+
+  Pagination({this.lastVisiblePage, this.hasNextPage});
+
+  Pagination.fromJson(Map<String, dynamic> json) {
+    lastVisiblePage = json['last_visible_page'];
+    hasNextPage = json['has_next_page'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['last_visible_page'] = this.lastVisiblePage;
+    data['has_next_page'] = this.hasNextPage;
     return data;
   }
 }
@@ -286,13 +268,15 @@ class Published {
   String? from;
   String? to;
   Prop? prop;
+  String? string;
 
-  Published({this.from, this.to, this.prop});
+  Published({this.from, this.to, this.prop, this.string});
 
   Published.fromJson(Map<String, dynamic> json) {
     from = json['from'];
     to = json['to'];
     prop = json['prop'] != null ? new Prop.fromJson(json['prop']) : null;
+    string = json['string'];
   }
 
   Map<String, dynamic> toJson() {
@@ -302,6 +286,7 @@ class Published {
     if (this.prop != null) {
       data['prop'] = this.prop!.toJson();
     }
+    data['string'] = this.string;
     return data;
   }
 }
@@ -309,14 +294,12 @@ class Published {
 class Prop {
   From? from;
   From? to;
-  String? string;
 
-  Prop({this.from, this.to, this.string});
+  Prop({this.from, this.to});
 
   Prop.fromJson(Map<String, dynamic> json) {
     from = json['from'] != null ? new From.fromJson(json['from']) : null;
     to = json['to'] != null ? new From.fromJson(json['to']) : null;
-    string = json['string'];
   }
 
   Map<String, dynamic> toJson() {
@@ -327,7 +310,6 @@ class Prop {
     if (this.to != null) {
       data['to'] = this.to!.toJson();
     }
-    data['string'] = this.string;
     return data;
   }
 }
