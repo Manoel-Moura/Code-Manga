@@ -1,5 +1,7 @@
 import 'dart:ui';
 
+import 'package:code_manga/API/mangaModel.dart';
+import 'package:code_manga/API/repository.dart';
 import 'package:code_manga/consts/colors/colors.dart';
 import 'package:code_manga/screens/cadastroPage.dart';
 import 'package:code_manga/screens/loginPage.dart';
@@ -11,6 +13,7 @@ import 'package:code_manga/widgets/manga.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:code_manga/widgets/button.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -22,6 +25,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
+    Repository r = Provider.of(context);
     return SafeArea(
       child: Scaffold(
         backgroundColor: Color.fromRGBO(31, 31, 31, 0.9),
@@ -90,11 +94,31 @@ class _HomePageState extends State<HomePage> {
                       scrollDirection: Axis.horizontal,
                       child: Row(
                         children: [
-                          Avatar(
-                            text: 'One Piece',
-                            url:
-                                'https://sm.ign.com/ign_br/tv/o/one-piece-/one-piece-2_1xby.jpg',
+                          FutureBuilder(
+                            future: r.getManga(8),
+                            builder: (context, snapshot) {
+                              if (snapshot.hasData) {
+                                MangaApiModel manga =
+                                    snapshot.data as MangaApiModel;
+                                return Avatar(
+                                  text: '${manga.data!.title}',
+                                  url: manga.data!.images!.jpg!.imageUrl ??
+                                      'https://www.publicdomainpictures.net/pictures/280000/nahled/not-found-image-15383864787lu.jpg',
+                                );
+                              } else {
+                                return Avatar(
+                                  text: 'Carregando',
+                                  url:
+                                      'https://www.publicdomainpictures.net/pictures/280000/nahled/not-found-image-15383864787lu.jpg',
+                                );
+                              }
+                            },
                           ),
+                          // Avatar(
+                          //   text: 'Berserker',
+                          //   url: //'${getUrl()}',
+                          //       'https://sm.ign.com/ign_br/tv/o/one-piece-/one-piece-2_1xby.jpg',
+                          // ),
                           Avatar(
                             text: 'Naruto',
                             url:
