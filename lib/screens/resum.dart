@@ -5,7 +5,13 @@ import 'package:code_manga/widgets/categoria.dart';
 import 'package:flutter/material.dart';
 
 class Resum extends StatelessWidget {
-  const Resum({Key? key}) : super(key: key);
+  final String url;
+  final String title;
+  final String resum;
+
+  const Resum(
+      {Key? key, required this.url, required this.title, required this.resum})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -59,13 +65,13 @@ class Resum extends StatelessWidget {
             child: Column(
               children: [
                 ResumDestaque(
-                  url:
-                      "https://images-na.ssl-images-amazon.com/images/I/51zXJBloNpL._SX331_BO1,204,203,200_.jpg",
+                  url: url,
+                  titulo: title,
                 ),
                 Padding(
                   padding: EdgeInsets.only(top: 5),
                   child: Text(
-                    'Um Mangá da hora!',
+                    resum,
                     style: TextStyle(color: KText, fontSize: 24),
                   ),
                 )
@@ -78,9 +84,11 @@ class Resum extends StatelessWidget {
 
 class ResumDestaque extends StatelessWidget {
   final String url;
+  final String titulo;
   //List<String> generos = ['Sombrio', 'Misterio', 'Espiritismo'];
 
-  const ResumDestaque({Key? key, required this.url}) : super(key: key);
+  const ResumDestaque({Key? key, required this.url, required this.titulo})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -101,7 +109,7 @@ class ResumDestaque extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.only(bottom: 40),
                 child: Text(
-                  'JUJUTSU\n  KAISEN',
+                  titulo,
                   style: TextStyle(
                       color: kprimaryColor,
                       fontSize: 40.0,

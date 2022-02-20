@@ -13,6 +13,7 @@ class MangaApiModel {
       data['data'] = this.data!.toJson();
     }
     return data;
+    // return data;
   }
 }
 
