@@ -213,30 +213,30 @@ class _HomePageState extends State<HomePage> {
             ],
           ),
         ),
-        bottomNavigationBar: BottomNavigationBar(
-          fixedColor: kprimaryColor,
-          backgroundColor: Color.fromRGBO(31, 31, 31, 0.9),
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: Icon(Icons.menu),
-              label: 'Menu',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'Home',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.south,
-              ),
-              label: 'School',
-            ),
-          ],
-          // currentIndex: _selectedIndex,
-          //selectedItemColor: KText,
+        // bottomNavigationBar: BottomNavigationBar(
+        //   fixedColor: kprimaryColor,
+        //   backgroundColor: Color.fromRGBO(31, 31, 31, 0.9),
+        //   items: const <BottomNavigationBarItem>[
+        //     BottomNavigationBarItem(
+        //       icon: Icon(Icons.menu),
+        //       label: 'Menu',
+        //     ),
+        //     BottomNavigationBarItem(
+        //       icon: Icon(Icons.home),
+        //       label: 'Home',
+        //     ),
+        //     BottomNavigationBarItem(
+        //       icon: Icon(
+        //         Icons.south,
+        //       ),
+        //       label: 'School',
+        //     ),
+        //   ],
+        //   // currentIndex: _selectedIndex,
+        //   //selectedItemColor: KText,
 
-          //onTap: _onItemTapped,
-        ),
+        //   //onTap: _onItemTapped,
+        // ),
       ),
     );
   }
