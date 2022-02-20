@@ -9,21 +9,26 @@ class Repository {
   Future<MangaApiModel> buscaUmMangaId(int id) async {
     Dio dio = Dio();
     dio.options.baseUrl = baseUrl;
-    var resposta = await dio.get(endpoint + "${id}");
+    var resposta;
+    try {
+      resposta = await dio.get(endpoint + "${id}");
+    } catch (e) {
+      resposta = await dio.get(endpoint + "${113138}");
+    }
 
     if (resposta.statusCode == 200) {
       return MangaApiModel.fromJson(resposta.data);
     }
+
     return MangaApiModel();
   }
 
   Future getManga(int id) async {
     try {
       MangaApiModel manga = await buscaUmMangaId(id);
-      // print('Meu link ${manga.data!.images!.jpg!.imageUrl}');
+
       return manga;
     } catch (Exc) {
-      print(Exc);
       rethrow;
     }
   }

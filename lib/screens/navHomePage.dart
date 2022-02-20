@@ -1,4 +1,5 @@
 import 'package:code_manga/consts/colors/colors.dart';
+import 'package:code_manga/screens/cadastroPage.dart';
 import 'package:code_manga/screens/homePage.dart';
 import 'package:code_manga/screens/loginPage.dart';
 import 'package:code_manga/screens/resum.dart';
@@ -27,7 +28,7 @@ class _NavHomeState extends State<NavHome> {
       body: PageView(
         physics: NeverScrollableScrollPhysics(),
         controller: pageViewController,
-        children: [HomePage(), Resum(), loginPage()],
+        children: [HomePage(), cadastro(), loginPage()],
       ),
       bottomNavigationBar: AnimatedBuilder(
           animation: pageViewController,
