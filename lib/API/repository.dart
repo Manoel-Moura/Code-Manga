@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:code_manga/API/mangaModel.dart';
 
@@ -8,10 +7,13 @@ class Repository {
 
   Future<MangaApiModel> buscaUmMangaId(int id) async {
     Dio dio = Dio();
+
     dio.options.baseUrl = baseUrl;
-    var resposta;
+
+    dynamic resposta;
+
     try {
-      resposta = await dio.get(endpoint + "${id}");
+      resposta = await dio.get(endpoint + "$id");
     } catch (e) {
       resposta = await dio.get(endpoint + "${113138}");
     }
@@ -28,15 +30,11 @@ class Repository {
       MangaApiModel manga = await buscaUmMangaId(id);
 
       return manga;
+      // ignore: non_constant_identifier_names
     } catch (Exc) {
+      // ignore: avoid_print
       print(Exc);
       rethrow;
     }
   }
-
-  // Future getImageManga(int id) async {
-  //   MangaApiModel manga = await buscaUmMangaId(id);
-  //   // print('${manga.data!.images!.jpg!.largeImageUrl}');
-  //   return '${manga.data!.images!.jpg!.largeImageUrl}';
-  // }
 }
