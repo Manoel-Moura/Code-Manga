@@ -29,6 +29,7 @@ class Repository {
 
       return manga;
     } catch (Exc) {
+      print(Exc);
       rethrow;
     }
   }

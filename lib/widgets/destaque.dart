@@ -28,7 +28,7 @@ class _DestaqueState extends State<Destaque> {
     var url;
     var resum;
     Random random = new Random();
-    int randomNumber = random.nextInt(200000);
+    int randomNumber = random.nextInt(119668);
 
     return GestureDetector(
       child: FutureBuilder(
@@ -84,21 +84,38 @@ class _DestaqueState extends State<Destaque> {
               ),
             );
           } else {
-            return Avatar(
-              text: 'Carregando',
-              url:
-                  'https://www.publicdomainpictures.net/pictures/280000/nahled/not-found-image-15383864787lu.jpg',
+            return Container(
+              width: MediaQuery.of(context).size.width,
+              height: (MediaQuery.of(context).size.height) / 2.5,
+              child: Stack(
+                children: [
+                  Image.network(
+                      'https://www.publicdomainpictures.net/pictures/280000/nahled/not-found-image-15383864787lu.jpg'),
+                  Center(
+                    child: Text(
+                      'Carregando...',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(color: KText, fontSize: 25),
+                    ),
+                  )
+                ],
+              ),
             );
           }
         },
       ),
       onTap: () {
-        Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) => Resum(
-                  resum: resum,
-                  title: nome,
-                  url: url,
-                )));
+        if (nome != null) {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => Resum(
+                resum: resum,
+                title: nome,
+                url: url,
+              ),
+            ),
+          );
+        }
       },
     );
   }
