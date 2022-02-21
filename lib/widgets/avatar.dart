@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:code_manga/consts/colors/colors.dart';
-import 'package:code_manga/consts/colors/colors.dart';
 
 class Avatar extends StatelessWidget {
   final String text;
@@ -11,7 +10,7 @@ class Avatar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(left: 8, right: 8),
+      padding: const EdgeInsets.only(left: 8, right: 8),
       child: CircleAvatar(
           backgroundImage: NetworkImage(url),
           radius: 50,
@@ -19,11 +18,11 @@ class Avatar extends StatelessWidget {
             alignment: Alignment.bottomCenter,
             child: Text(
               text,
-              style: TextStyle(
-                  color: KText, fontSize: 20.0, fontWeight: FontWeight.bold),
+              style: const TextStyle(
+                  color: kText, fontSize: 20.0, fontWeight: FontWeight.bold),
             ),
           )
-          // foregroundColor: KText,
+          // foregroundColor: kText,
           ),
     );
   }

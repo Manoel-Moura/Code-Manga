@@ -1,16 +1,12 @@
+// ignore_for_file: prefer_typing_uninitialized_variables
+
 import 'package:code_manga/API/mangaModel.dart';
 import 'package:code_manga/API/repository.dart';
 import 'package:code_manga/consts/colors/colors.dart';
-import 'package:code_manga/screens/cadastroPage.dart';
 import 'package:code_manga/screens/resum.dart';
 import 'dart:math';
-import 'package:code_manga/widgets/categoria.dart';
-import 'package:code_manga/widgets/avatar.dart';
-import 'package:code_manga/widgets/manga.dart';
-
 import 'package:flutter/material.dart';
 //import 'package:google_fonts/google_fonts.dart';
-import 'package:code_manga/widgets/button.dart';
 import 'package:provider/provider.dart';
 
 class Destaque extends StatefulWidget {
@@ -26,8 +22,8 @@ class _DestaqueState extends State<Destaque> {
     Repository r = Provider.of(context);
     var nome;
     var url;
-    var resum;
-    Random random = new Random();
+    var resume;
+    Random random = Random();
     int randomNumber = random.nextInt(119668);
 
     return GestureDetector(
@@ -38,8 +34,8 @@ class _DestaqueState extends State<Destaque> {
             MangaApiModel manga = snapshot.data as MangaApiModel;
             nome = '${manga.data!.title}';
             url = '${manga.data!.images!.jpg!.imageUrl}';
-            resum = '${manga.data!.synopsis}';
-            return Container(
+            resume = '${manga.data!.synopsis}';
+            return SizedBox(
               width: MediaQuery.of(context).size.width,
               height: (MediaQuery.of(context).size.height) / 2.5,
               child: Stack(
@@ -52,7 +48,7 @@ class _DestaqueState extends State<Destaque> {
                   Column(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Center(
+                      const Center(
                         child: Padding(
                           padding: EdgeInsets.only(bottom: 10),
                           child: Text(
@@ -65,18 +61,14 @@ class _DestaqueState extends State<Destaque> {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.only(bottom: 15),
+                        padding: const EdgeInsets.only(bottom: 15),
                         child: Text(
                           '${manga.data!.title}',
-                          style: TextStyle(
+                          style: const TextStyle(
                               color: kprimaryColor,
                               fontSize: 35.0,
                               fontWeight: FontWeight.bold),
                         ),
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [],
                       ),
                     ],
                   ),
@@ -84,18 +76,18 @@ class _DestaqueState extends State<Destaque> {
               ),
             );
           } else {
-            return Container(
+            return SizedBox(
               width: MediaQuery.of(context).size.width,
               height: (MediaQuery.of(context).size.height) / 2.5,
               child: Stack(
                 children: [
                   Image.network(
                       'https://www.publicdomainpictures.net/pictures/280000/nahled/not-found-image-15383864787lu.jpg'),
-                  Center(
+                  const Center(
                     child: Text(
                       'Carregando...',
                       textAlign: TextAlign.center,
-                      style: TextStyle(color: KText, fontSize: 25),
+                      style: TextStyle(color: kText, fontSize: 25),
                     ),
                   )
                 ],
@@ -108,8 +100,8 @@ class _DestaqueState extends State<Destaque> {
         if (nome != null) {
           Navigator.of(context).push(
             MaterialPageRoute(
-              builder: (context) => Resum(
-                resum: resum,
+              builder: (context) => Resume(
+                resume: resume,
                 title: nome,
                 url: url,
               ),

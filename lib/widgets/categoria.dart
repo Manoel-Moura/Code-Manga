@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:code_manga/consts/colors/colors.dart';
-import 'package:code_manga/consts/colors/colors.dart';
 
 class Categoria extends StatelessWidget {
   final String text;
@@ -10,7 +9,7 @@ class Categoria extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Padding(
+        const Padding(
           padding: EdgeInsets.only(bottom: 15),
           child: CircleAvatar(
             backgroundColor: kprimaryColor,
@@ -18,11 +17,11 @@ class Categoria extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: EdgeInsets.only(bottom: 15, left: 3, right: 15),
+          padding: const EdgeInsets.only(bottom: 15, left: 3, right: 15),
           child: Text(
             text,
-            style: TextStyle(
-                color: KText, fontSize: 11.0, fontWeight: FontWeight.bold),
+            style: const TextStyle(
+                color: kText, fontSize: 11.0, fontWeight: FontWeight.bold),
           ),
         ),
       ],
