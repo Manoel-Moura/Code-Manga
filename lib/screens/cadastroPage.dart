@@ -1,19 +1,18 @@
-// import 'dart:html';
-
+// ignore_for_file: file_names
 import 'package:code_manga/consts/colors/colors.dart';
 import 'package:code_manga/widgets/input.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:code_manga/widgets/button.dart';
 
-class cadastro extends StatefulWidget {
-  const cadastro({Key? key}) : super(key: key);
+class Cadastro extends StatefulWidget {
+  const Cadastro({Key? key}) : super(key: key);
 
   @override
-  _cadastroState createState() => _cadastroState();
+  _CadastroState createState() => _CadastroState();
 }
 
-class _cadastroState extends State<cadastro> {
+class _CadastroState extends State<Cadastro> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -56,15 +55,16 @@ class _cadastroState extends State<cadastro> {
                   style: GoogleFonts.notoSans(
                     fontWeight: FontWeight.bold,
                     fontSize: 30,
-                    color: KText,
+                    color: kText,
                   ),
                 ),
               ),
               Container(
                 // margin: const EdgeInsets.only(left: 29, right: 29),
-                margin: EdgeInsets.symmetric(vertical: 29, horizontal: 29),
+                margin:
+                    const EdgeInsets.symmetric(vertical: 29, horizontal: 29),
                 child: Column(
-                  children: [
+                  children: const [
                     Padding(
                       padding: EdgeInsets.only(bottom: 15),
                       child: Input(

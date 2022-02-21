@@ -1,20 +1,20 @@
-// import 'dart:html';
+// ignore_for_file: file_names
 
 import 'package:code_manga/consts/colors/colors.dart';
-import 'package:code_manga/screens/cadastroPage.dart';
+import 'package:code_manga/screens/CadastroPage.dart';
 import 'package:code_manga/widgets/input.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:code_manga/widgets/button.dart';
 
-class loginPage extends StatefulWidget {
-  const loginPage({Key? key}) : super(key: key);
+class LoginPage extends StatefulWidget {
+  const LoginPage({Key? key}) : super(key: key);
 
   @override
-  _loginPageState createState() => _loginPageState();
+  _LoginPageState createState() => _LoginPageState();
 }
 
-class _loginPageState extends State<loginPage> {
+class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -57,16 +57,17 @@ class _loginPageState extends State<loginPage> {
                   style: GoogleFonts.notoSans(
                     fontWeight: FontWeight.bold,
                     fontSize: 40,
-                    color: KText,
+                    color: kText,
                   ),
                 ),
               ),
               Container(
                 // margin: const EdgeInsets.only(left: 29, right: 29),
-                margin: EdgeInsets.symmetric(vertical: 29, horizontal: 29),
+                margin:
+                    const EdgeInsets.symmetric(vertical: 29, horizontal: 29),
                 child: Column(
                   children: [
-                    Padding(
+                    const Padding(
                       padding: EdgeInsets.only(bottom: 25),
                       child: Input(
                         icone: Icons.email_rounded,
@@ -74,12 +75,12 @@ class _loginPageState extends State<loginPage> {
                         password: false,
                       ),
                     ),
-                    Input(
+                    const Input(
                       icone: Icons.lock,
                       texto: "Digite sua senha",
                       password: true,
                     ),
-                    Padding(
+                    const Padding(
                       padding: EdgeInsets.only(top: 29, bottom: 29),
                       child: Button(
                         text: 'Entrar',
@@ -88,19 +89,23 @@ class _loginPageState extends State<loginPage> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(
+                        const Text(
                           'Ainda não possui conta?',
-                          style: TextStyle(color: KText),
+                          style: TextStyle(color: kText),
                         ),
                         TextButton(
-                            onPressed: () {
-                              Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => cadastro()));
-                            },
-                            child: Text(
-                              'Cadastra-se',
-                              style: TextStyle(color: kprimaryColor),
-                            ))
+                          onPressed: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => const Cadastro(),
+                              ),
+                            );
+                          },
+                          child: const Text(
+                            'Cadastra-se',
+                            style: TextStyle(color: kprimaryColor),
+                          ),
+                        ),
                       ],
                     ),
                   ],
