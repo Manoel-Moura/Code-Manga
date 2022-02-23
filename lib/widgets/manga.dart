@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -7,14 +9,16 @@ class Manga extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 150,
-      height: 220,
-      child: Padding(
-        padding: const EdgeInsets.only(left: 2.5, right: 2.5, bottom: 25),
-        child: Image.network(
-          url,
-          fit: BoxFit.fitWidth,
+    return Padding(
+      padding: const EdgeInsets.all(9.0),
+      child: Container(
+        width: 150,
+        height: 220,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          image: DecorationImage(
+            image: NetworkImage(url),
+          ),
         ),
       ),
     );
