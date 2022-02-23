@@ -14,6 +14,7 @@ import 'package:code_manga/widgets/cabecalho.dart';
 import 'package:code_manga/widgets/destaque.dart';
 // import 'package:code_manga/widgets/input.dart';
 import 'package:code_manga/widgets/manga.dart';
+import 'package:flutter/cupertino.dart';
 // import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 // import 'package:google_fonts/google_fonts.dart';
@@ -99,6 +100,7 @@ class _HomePageState extends State<HomePage> {
                   );
                 },
               ),
+              //  CategoriaOP(),
               FutureBuilder(
                 future: recuperaMangas(),
                 builder: (context, snapshot) {
@@ -134,7 +136,11 @@ class _HomePageState extends State<HomePage> {
                       child: Row(
                         children: mangas
                             .map(
-                              (e) => Manga(url: '${e.images!.jpg!.imageUrl}'),
+                              (e) => Manga(
+                                title: '${e.title}',
+                                url: '${e.images!.jpg!.imageUrl}',
+                                resume: '${e.synopsis}',
+                              ),
                             )
                             .toList(),
                       ),
@@ -152,3 +158,26 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
+
+// class CategoriaOP extends StatelessWidget {
+//   const CategoriaOP({Key? key}) : super(key: key);
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Container(
+//       height: 60.0,
+//       decoration: BoxDecoration(
+//           color: Colors.redAccent,
+//           // border: Border.all(color: Colors.pink, width: 10),
+//           shape: BoxShape.circle),
+//       child: Center(
+//         child: Text(
+//           'All',
+//           style: TextStyle(
+//             fontSize: 22.0,
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
