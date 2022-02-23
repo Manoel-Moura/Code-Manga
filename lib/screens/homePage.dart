@@ -144,7 +144,7 @@ class _HomePageState extends State<HomePage> {
                 },
               ),
               FutureBuilder(
-                future: recuperaMangas(),
+                future: recuperaMangasPorNome('Naruto'),
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
                     List<Data> mangas = snapshot.data as List<Data>;

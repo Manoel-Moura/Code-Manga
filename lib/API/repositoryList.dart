@@ -26,7 +26,7 @@ Future<ListaMangaApiModel> buscaListaDeMangas() async {
   Dio dio = Dio();
   dio.options.baseUrl = baseUrl;
   var resposta;
-  await Future.delayed(const Duration(milliseconds: 500), () async {
+  await Future.delayed(const Duration(seconds: 1), () async {
     resposta = await dio.get(endpoint);
   });
 
@@ -51,7 +51,7 @@ Future<ListaMangaApiModel> buscaListaDeMangasPorNome(String name) async {
   dio.options.baseUrl = baseUrl;
   var resposta;
   name = name.replaceAll(' ', '+');
-  await Future.delayed(const Duration(milliseconds: 500), () async {
+  await Future.delayed(const Duration(seconds: 1), () async {
     resposta = await dio.get(endpoint + '?q=${name}');
   });
 
