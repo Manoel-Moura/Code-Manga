@@ -38,7 +38,7 @@ Future<List<Data>?> recuperaMangas() async {
 
   ListaMangaApiModel lista = await buscaListaDeMangas();
 
-  listaDeMangas = lista.data!.getRange(0, 4).toList();
+  listaDeMangas = lista.data!.getRange(0, 25).toList();
 
   return listaDeMangas;
 }
