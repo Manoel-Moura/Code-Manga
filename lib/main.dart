@@ -1,7 +1,3 @@
-import 'dart:convert';
-// import 'dart:html';
-
-import 'package:code_manga/API/repositoryList.dart';
 import 'package:code_manga/API/repositoryUnity.dart';
 import 'package:code_manga/screens/navHomePage.dart';
 import 'package:flutter/material.dart';

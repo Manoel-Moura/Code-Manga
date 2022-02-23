@@ -10,6 +10,7 @@ import 'package:code_manga/API/listaMangaApiModel.dart';
 import 'package:code_manga/consts/colors/colors.dart';
 import 'package:code_manga/screens/loginPage.dart';
 import 'package:code_manga/widgets/avatar.dart';
+import 'package:code_manga/widgets/cabecalho.dart';
 import 'package:code_manga/widgets/destaque.dart';
 // import 'package:code_manga/widgets/input.dart';
 import 'package:code_manga/widgets/manga.dart';
@@ -35,7 +36,7 @@ class _HomePageState extends State<HomePage> {
     // RepositoryList r = Provider.of(context);
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Color.fromRGBO(31, 31, 31, 0.9),
+        backgroundColor: const Color.fromRGBO(31, 31, 31, 0.9),
         appBar: AppBar(
           leading: IconButton(
             onPressed: () {
@@ -55,30 +56,10 @@ class _HomePageState extends State<HomePage> {
                   colors: <Color>[kAppBar, kAppBar2]),
             ),
           ),
-          title: Row(
-            children: [
-              Container(
-                margin: const EdgeInsets.only(right: 4.0),
-                child: Text(
-                  'Manga',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontFamily: 'BebasNeue',
-                      fontSize: 25.0),
-                ),
-              ),
-              Text(
-                'Code',
-                style: TextStyle(
-                    color: kprimaryColor,
-                    fontFamily: 'BebasNeue',
-                    fontSize: 25.0),
-              ),
-            ],
-          ),
+          title: Cabecalho(),
           actions: [
             Padding(
-                padding: EdgeInsets.only(right: 35.0),
+                padding: const EdgeInsets.only(right: 35.0),
                 child: GestureDetector(
                   onTap: () {},
                   // ignore: prefer_const_constructors
@@ -113,18 +94,6 @@ class _HomePageState extends State<HomePage> {
                             .toList(),
                       ),
                     );
-                    // return ListView.builder(
-                    //   //shrinkWrap: true,
-                    //   scrollDirection: Axis.horizontal,
-                    //   itemCount: mangas.length,
-                    //   itemBuilder: (_, index) {
-                    //     Data manga = mangas[index];
-                    //     return Avatar(
-                    //       text: '${manga.title}',
-                    //       url: '${manga.images!.jpg!.imageUrl}',
-                    //     );
-                    //   }, // itemBuilder
-                    // );
                   }
                   return CircularProgressIndicator(
                     color: Colors.red,
