@@ -1,7 +1,7 @@
 // ignore_for_file: file_names
 
 import 'package:code_manga/consts/colors/colors.dart';
-import 'package:code_manga/screens/CadastroPage.dart';
+import 'package:code_manga/screens/cadastroPage.dart';
 import 'package:code_manga/widgets/input.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
