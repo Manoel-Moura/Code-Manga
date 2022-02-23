@@ -1,12 +1,12 @@
 // ignore_for_file: file_names
 
-class MangaApiModel {
+class ListaMangaApiModel {
   Pagination? pagination;
   List<Data>? data;
 
-  MangaApiModel({this.pagination, this.data});
+  ListaMangaApiModel({this.pagination, this.data});
 
-  MangaApiModel.fromJson(Map<String, dynamic> json) {
+  ListaMangaApiModel.fromJson(Map<String, dynamic> json) {
     pagination = json['pagination'] != null
         ? Pagination.fromJson(json['pagination'])
         : null;

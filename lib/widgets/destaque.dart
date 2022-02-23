@@ -1,7 +1,8 @@
 // ignore_for_file: prefer_typing_uninitialized_variables
 
-import 'package:code_manga/API/mangaModel.dart';
-import 'package:code_manga/API/repository.dart';
+import 'package:code_manga/API/mangaApiModel.dart';
+import 'package:code_manga/API/repositoryList.dart';
+import 'package:code_manga/API/repositoryUnity.dart';
 import 'package:code_manga/consts/colors/colors.dart';
 import 'package:code_manga/screens/resum.dart';
 import 'dart:math';
@@ -19,7 +20,8 @@ class Destaque extends StatefulWidget {
 class _DestaqueState extends State<Destaque> {
   @override
   Widget build(BuildContext context) {
-    Repository r = Provider.of(context);
+    // RepositoryList rl = Provider.of(context);
+    RepositoryUnity rId = Provider.of(context);
     var nome;
     var url;
     var resume;
@@ -28,7 +30,7 @@ class _DestaqueState extends State<Destaque> {
 
     return GestureDetector(
       child: FutureBuilder(
-        future: r.getManga(randomNumber),
+        future: rId.buscaUmMangaId(randomNumber),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             MangaApiModel manga = snapshot.data as MangaApiModel;
