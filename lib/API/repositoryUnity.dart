@@ -8,12 +8,17 @@ class RepositoryUnity {
   Future<MangaApiModel> buscaUmMangaId(int id) async {
     Dio dio = Dio();
     dio.options.baseUrl = baseUrl;
-    dynamic resposta;
+    var resposta;
 
     try {
-      resposta = await dio.get(endpoint + "$id");
+      await Future.delayed(const Duration(milliseconds: 500), () async {
+        resposta = await dio.get(endpoint + '${id}');
+      });
     } catch (e) {
-      resposta = await dio.get(endpoint + '${113138}');
+      await Future.delayed(const Duration(milliseconds: 500), () async {
+        resposta = await dio.get(endpoint + '${113138}');
+      });
+      //resposta = await dio.get(endpoint + '${113138}');
     }
 
     if (resposta.statusCode == 200) {
@@ -40,7 +45,7 @@ class RepositoryUnity {
 //   // print('${manga.data!.images!.jpg!.largeImageUrl}');
 //   return '${manga.data!.images!.jpg!.largeImageUrl}';
 // }
-
+/*
   List<int> mangasId = [
     13,
     12,
@@ -54,5 +59,5 @@ class RepositoryUnity {
     }
 
     return mangas;
-  }
+  }*/
 }

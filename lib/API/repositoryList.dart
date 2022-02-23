@@ -25,7 +25,10 @@ const String endpoint = '/v4/manga';
 Future<ListaMangaApiModel> buscaListaDeMangas() async {
   Dio dio = Dio();
   dio.options.baseUrl = baseUrl;
-  var resposta = await dio.get(endpoint);
+  var resposta;
+  await Future.delayed(const Duration(milliseconds: 500), () async {
+    resposta = await dio.get(endpoint);
+  });
 
   if (resposta.statusCode == 200) {
     return ListaMangaApiModel.fromJson(resposta.data);
@@ -39,6 +42,31 @@ Future<List<Data>?> recuperaMangas() async {
   ListaMangaApiModel lista = await buscaListaDeMangas();
 
   listaDeMangas = lista.data!.getRange(0, 25).toList();
+
+  return listaDeMangas;
+}
+
+Future<ListaMangaApiModel> buscaListaDeMangasPorNome(String name) async {
+  Dio dio = Dio();
+  dio.options.baseUrl = baseUrl;
+  var resposta;
+  name = name.replaceAll(' ', '+');
+  await Future.delayed(const Duration(milliseconds: 500), () async {
+    resposta = await dio.get(endpoint + '?q=${name}');
+  });
+
+  if (resposta.statusCode == 200) {
+    return ListaMangaApiModel.fromJson(resposta.data);
+  }
+  return ListaMangaApiModel();
+}
+
+Future<List<Data>?> recuperaMangasPorNome(String name) async {
+  List<Data>? listaDeMangas = [];
+
+  ListaMangaApiModel lista = await buscaListaDeMangasPorNome(name);
+  int tam = lista.data!.length;
+  listaDeMangas = lista.data!.getRange(0, tam).toList();
 
   return listaDeMangas;
 }
