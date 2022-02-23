@@ -10,20 +10,17 @@ class Avatar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 8, right: 8),
+      padding: const EdgeInsets.all(8.0),
       child: CircleAvatar(
-          backgroundImage: NetworkImage(url),
-          radius: 50,
-          child: Align(
-            alignment: Alignment.bottomCenter,
-            child: Text(
-              text,
-              style: const TextStyle(
-                  color: kText, fontSize: 20.0, fontWeight: FontWeight.bold),
-            ),
-          )
-          // foregroundColor: kText,
-          ),
+        backgroundImage: NetworkImage(url),
+        radius: 50,
+        child: Text(
+          text,
+          style: const TextStyle(
+              color: kText, fontSize: 20.0, fontWeight: FontWeight.bold),
+        ),
+        // foregroundColor: kText,
+      ),
     );
   }
 }

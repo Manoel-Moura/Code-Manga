@@ -8,7 +8,6 @@ class Manga extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      // color: Colors.white,
       width: 150,
       height: 220,
       child: Padding(

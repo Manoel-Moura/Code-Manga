@@ -1,13 +1,10 @@
-// ignore_for_file: prefer_typing_uninitialized_variables
-
 import 'package:code_manga/API/mangaApiModel.dart';
-import 'package:code_manga/API/repositoryList.dart';
 import 'package:code_manga/API/repositoryUnity.dart';
 import 'package:code_manga/consts/colors/colors.dart';
 import 'package:code_manga/screens/resum.dart';
 import 'dart:math';
 import 'package:flutter/material.dart';
-//import 'package:google_fonts/google_fonts.dart';
+
 import 'package:provider/provider.dart';
 
 class Destaque extends StatefulWidget {
@@ -91,7 +88,7 @@ class _DestaqueState extends State<Destaque> {
                       textAlign: TextAlign.center,
                       style: TextStyle(color: kText, fontSize: 25),
                     ),
-                  )
+                  ),
                 ],
               ),
             );
