@@ -9,6 +9,7 @@ class Manga extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //Manga card
     return Padding(
       padding: const EdgeInsets.all(9.0),
       child: Container(
