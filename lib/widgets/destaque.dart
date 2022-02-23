@@ -5,6 +5,7 @@ import 'package:code_manga/screens/homePage.dart';
 import 'package:code_manga/screens/resum.dart';
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'package:provider/provider.dart';
 
@@ -32,15 +33,17 @@ class Destaque extends StatelessWidget {
             Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                const Center(
+                Center(
                   child: Padding(
                     padding: EdgeInsets.only(bottom: 10),
                     child: Text(
                       'Manga',
-                      style: TextStyle(
-                          color: kBackgroundColor,
-                          fontSize: 18.0,
-                          fontWeight: FontWeight.bold),
+                      style: GoogleFonts.poppins(
+                        textStyle: const TextStyle(
+                            color: kBackgroundColor,
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.bold),
+                      ),
                     ),
                   ),
                 ),
@@ -48,10 +51,12 @@ class Destaque extends StatelessWidget {
                   padding: const EdgeInsets.only(bottom: 15),
                   child: Text(
                     title,
-                    style: const TextStyle(
-                        color: kprimaryColor,
-                        fontSize: 35.0,
-                        fontWeight: FontWeight.bold),
+                    style: GoogleFonts.poppins(
+                      textStyle: const TextStyle(
+                          color: kprimaryColor,
+                          fontSize: 35.0,
+                          fontWeight: FontWeight.bold),
+                    ),
                   ),
                 ),
               ],

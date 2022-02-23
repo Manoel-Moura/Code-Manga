@@ -1,7 +1,6 @@
 import 'dart:html';
 
 import 'package:code_manga/screens/resum.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Manga extends StatelessWidget {
