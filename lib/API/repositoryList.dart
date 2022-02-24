@@ -8,9 +8,6 @@ import 'package:code_manga/API/listaMangaApiModel.dart';
 // import 'package:path/path.dart';
 // import 'package:provider/provider.dart';
 
-const String baseUrl = 'https://api.jikan.moe';
-const String endpoint = '/v4/manga';
-
 // Future<ListaMangaApiModel> buscaUmMangaNome(String name) async {
 //   Dio dio = Dio();
 //   dio.options.baseUrl = baseUrl;
@@ -21,24 +18,85 @@ const String endpoint = '/v4/manga';
 //   }
 //   return ListaMangaApiModel();
 // }
+class RepositoryList {
+  final String baseUrl = 'https://api.jikan.moe';
+  final String endpoint = '/v4/manga';
+  final String endpointManhwa = '/v4/manga?type=manhwa';
+  final String endpointHentai = '/v4/manga?genres=12';
+  final int time = 35;
 
-Future<ListaMangaApiModel> buscaListaDeMangas() async {
-  Dio dio = Dio();
-  dio.options.baseUrl = baseUrl;
-  var resposta = await dio.get(endpoint);
+  Future<ListaMangaApiModel> buscaListaDeMangas() async {
+    Dio dio = Dio();
+    dio.options.baseUrl = baseUrl;
+    // ignore: prefer_typing_uninitialized_variables
+    var resposta;
+    await Future.delayed(Duration(seconds: time), () async {
+      resposta = await dio.get(endpoint);
+    });
 
-  if (resposta.statusCode == 200) {
-    return ListaMangaApiModel.fromJson(resposta.data);
+    if (resposta.statusCode == 200) {
+      return ListaMangaApiModel.fromJson(resposta.data);
+    }
+    return ListaMangaApiModel();
   }
-  return ListaMangaApiModel();
-}
 
-Future<List<Data>?> recuperaMangas() async {
-  List<Data>? listaDeMangas = [];
+  Future<List<Data>?> recuperaMangas() async {
+    List<Data>? listaDeMangas = [];
 
-  ListaMangaApiModel lista = await buscaListaDeMangas();
+    ListaMangaApiModel lista = await buscaListaDeMangas();
 
-  listaDeMangas = lista.data!.getRange(0, 25).toList();
+    listaDeMangas = lista.data!.getRange(0, 25).toList();
 
-  return listaDeMangas;
+    return listaDeMangas;
+  }
+
+  Future<ListaMangaApiModel> buscaListaDeMangasManhwa() async {
+    Dio dio = Dio();
+    dio.options.baseUrl = baseUrl;
+    // ignore: prefer_typing_uninitialized_variables
+    var resposta;
+    await Future.delayed(Duration(seconds: time), () async {
+      resposta = await dio.get(endpointManhwa);
+    });
+
+    if (resposta.statusCode == 200) {
+      return ListaMangaApiModel.fromJson(resposta.data);
+    }
+    return ListaMangaApiModel();
+  }
+
+  Future<List<Data>?> recuperaMangasManhwa() async {
+    List<Data>? listaDeMangasManhwa = [];
+    ListaMangaApiModel lista = await buscaListaDeMangasManhwa();
+    int tam = lista.data!.length;
+
+    listaDeMangasManhwa = lista.data!.getRange(0, tam).toList();
+
+    return listaDeMangasManhwa;
+  }
+
+  Future<ListaMangaApiModel> buscaListaDeMangasHentai() async {
+    Dio dio = Dio();
+    dio.options.baseUrl = baseUrl;
+    // ignore: prefer_typing_uninitialized_variables
+    var resposta;
+    await Future.delayed(Duration(seconds: time), () async {
+      resposta = await dio.get(endpointHentai);
+    });
+
+    if (resposta.statusCode == 200) {
+      return ListaMangaApiModel.fromJson(resposta.data);
+    }
+    return ListaMangaApiModel();
+  }
+
+  Future<List<Data>?> recuperaMangasHentai() async {
+    List<Data>? listaDeMangasHentai = [];
+    ListaMangaApiModel lista = await buscaListaDeMangasHentai();
+    int tam = lista.data!.length;
+
+    listaDeMangasHentai = lista.data!.getRange(0, tam).toList();
+
+    return listaDeMangasHentai;
+  }
 }

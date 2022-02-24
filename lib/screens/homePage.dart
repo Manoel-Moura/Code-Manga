@@ -1,11 +1,12 @@
 // ignore_for_file: file_names
 
-import 'dart:io';
+// import 'dart:io';
 import 'dart:ui';
 
 import 'package:code_manga/API/repositoryList.dart';
-import 'package:code_manga/API/listaMangaApiModel.dart';
-// import 'package:code_manga/API/mangaModel.dart';
+import 'package:code_manga/API/listaMangaApiModel.dart' as lmam;
+import 'package:code_manga/API/repositoryUnity.dart';
+import 'package:code_manga/API/mangaApiModel.dart';
 // import 'package:code_manga/API/repository.dart';
 import 'package:code_manga/consts/colors/colors.dart';
 import 'package:code_manga/screens/loginPage.dart';
@@ -34,17 +35,18 @@ List<String>? url = [];
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    // RepositoryList r = Provider.of(context);
+    RepositoryList r = Provider.of(context);
+    RepositoryUnity ru = Provider.of(context);
     return SafeArea(
       child: Scaffold(
         backgroundColor: const Color.fromRGBO(31, 31, 31, 0.9),
         appBar: AppBar(
           leading: IconButton(
             onPressed: () {
-              Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => LoginPage()));
+              Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => const LoginPage()));
             },
-            icon: Icon(
+            icon: const Icon(
               Icons.arrow_back,
               color: kText,
             ),
@@ -57,7 +59,7 @@ class _HomePageState extends State<HomePage> {
                   colors: <Color>[kAppBar, kAppBar2]),
             ),
           ),
-          title: Cabecalho(),
+          title: const Cabecalho(),
           actions: [
             Padding(
                 padding: const EdgeInsets.only(right: 35.0),
@@ -76,10 +78,10 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             children: [
               FutureBuilder(
-                future: recuperaMangas(),
+                future: r.recuperaMangas(),
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
-                    List<Data> mangas = snapshot.data as List<Data>;
+                    List<lmam.Data> mangas = snapshot.data as List<lmam.Data>;
                     return SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
                       child: Row(
@@ -102,19 +104,30 @@ class _HomePageState extends State<HomePage> {
               ),
               //  CategoriaOP(),
               FutureBuilder(
-                future: recuperaMangas(),
+                future: ru.recuperaMangas([
+                  13,
+                  12,
+                  2,
+                  11,
+                  // 14,
+                  // 15,
+                  // 16,
+                  // 10,
+                  113138 /**/
+                ]),
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
-                    List<Data> mangas = snapshot.data as List<Data>;
+                    List<MangaApiModel> mangas =
+                        snapshot.data as List<MangaApiModel>;
                     return SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
                       child: Row(
                         children: mangas
                             .map(
                               (e) => Avatar(
-                                text: '${e.title}',
-                                url: '${e.images!.jpg!.imageUrl}',
-                                resume: '${e.synopsis}',
+                                text: '${e.data!.title}',
+                                url: '${e.data!.images!.jpg!.imageUrl}',
+                                resume: '${e.data!.synopsis}',
                               ),
                             )
                             .toList(),
@@ -127,10 +140,149 @@ class _HomePageState extends State<HomePage> {
                 },
               ),
               FutureBuilder(
-                future: recuperaMangas(),
+                future: ru.recuperaMangas([
+                  // 13,
+                  // 12,
+                  // 113138,
+                  // 11,
+                  // 2,
+                  14,
+                  15,
+                  16,
+                  10,
+                  1,
+                  2,
+                  3,
+                  4,
+                  123,
+                  124,
+                  // 11117,
+                  // 65842,
+                  // 96099,
+                  // 103224,
+                  // 171529,
+                  // 196018,
+                  // 98911,
+                  // 94823,
+                  // 95614,
+                  /**/
+                ]),
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
-                    List<Data> mangas = snapshot.data as List<Data>;
+                    List<MangaApiModel> mangas =
+                        snapshot.data as List<MangaApiModel>;
+                    return SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: mangas
+                            .map(
+                              (e) => Manga(
+                                title: '${e.data!.title}',
+                                url: '${e.data!.images!.jpg!.imageUrl}',
+                                resume: '${e.data!.synopsis}',
+                              ),
+                            )
+                            .toList(),
+                      ),
+                    );
+                  }
+                  return const CircularProgressIndicator(
+                    color: kprimaryColor,
+                  );
+                },
+              ),
+              // FutureBuilder(
+              //   future: ru.recuperaMangas([
+              //     45832,
+              //     76612,
+              //     62822,
+              //     144548,
+              //     478188,
+              //     80004,
+              //     135985,
+              //     420597,
+              //     83258,
+              //     61901,
+              //     66331,
+              //     89084,
+              //     10842,
+              //     13633,
+              //     37247,
+              //     71665,
+              //     58287,
+              //   ]),
+              //   builder: (context, snapshot) {
+              //     if (snapshot.hasData) {
+              //       List<MangaApiModel> mangas =
+              //           snapshot.data as List<MangaApiModel>;
+              //       return SingleChildScrollView(
+              //         scrollDirection: Axis.horizontal,
+              //         child: Row(
+              //           children: mangas
+              //               .map(
+              //                 (e) => Manga(
+              //                   title: '${e.data!.title}',
+              //                   url: '${e.data!.images!.jpg!.imageUrl}',
+              //                   resume: '${e.data!.synopsis}',
+              //                 ),
+              //               )
+              //               .toList(),
+              //         ),
+              //       );
+              //     }
+              //     return const CircularProgressIndicator(
+              //       color: kprimaryColor,
+              //     );
+              //   },
+              // ),
+              Text(
+                'Manhwa',
+                style: TextStyle(
+                  color: Color(0XFFFFFFFF),
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              FutureBuilder(
+                future: r.recuperaMangasManhwa(),
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    List<lmam.Data> mangas = snapshot.data as List<lmam.Data>;
+                    return SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: mangas
+                            .map(
+                              (e) => Manga(
+                                title: '${e.title}',
+                                url: '${e.images!.jpg!.imageUrl}',
+                                resume: '${e.synopsis}',
+                              ),
+                            )
+                            .toList(),
+                      ),
+                    );
+                  }
+                  return Center(
+                    child: const CircularProgressIndicator(
+                      color: kprimaryColor,
+                    ),
+                  );
+                },
+              ),
+              Text(
+                'Hentai',
+                style: TextStyle(
+                  color: Color(0XFFFFFFFF),
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              FutureBuilder(
+                future: r.recuperaMangasHentai(),
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    List<lmam.Data> mangas = snapshot.data as List<lmam.Data>;
                     return SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
                       child: Row(

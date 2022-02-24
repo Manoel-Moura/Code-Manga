@@ -1,4 +1,4 @@
-import 'package:code_manga/screens/homePage.dart';
+// import 'package:code_manga/screens/homePage.dart';
 import 'package:code_manga/screens/resum.dart';
 import 'package:flutter/material.dart';
 import 'package:code_manga/consts/colors/colors.dart';
@@ -56,7 +56,7 @@ class Avatar extends StatelessWidget {
               ),
             ),
             Container(
-              margin: EdgeInsets.only(top: 9.0),
+              margin: const EdgeInsets.only(top: 9.0),
               child: Text(
                 text,
                 style: GoogleFonts.poppins(
@@ -70,6 +70,7 @@ class Avatar extends StatelessWidget {
         ),
       ),
       onTap: () {
+        // ignore: unnecessary_null_comparison
         if (text != null) {
           Navigator.of(context).push(
             MaterialPageRoute(

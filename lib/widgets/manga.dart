@@ -1,4 +1,4 @@
-import 'dart:html';
+// import 'dart:html';
 
 import 'package:code_manga/screens/resum.dart';
 import 'package:flutter/material.dart';
@@ -29,6 +29,7 @@ class Manga extends StatelessWidget {
         ),
       ),
       onTap: () {
+        // ignore: unnecessary_null_comparison
         if (title != null) {
           Navigator.of(context).push(
             MaterialPageRoute(

@@ -1,19 +1,25 @@
+// ignore_for_file: file_names
+
 import 'package:dio/dio.dart';
 import 'package:code_manga/API/mangaApiModel.dart';
 
-final String baseUrl = 'https://api.jikan.moe';
-final String endpoint = '/v4/manga/';
-
 class RepositoryUnity {
+  final String baseUrl = 'https://api.jikan.moe';
+  final String endpoint = '/v4/manga/';
+
   Future<MangaApiModel> buscaUmMangaId(int id) async {
     Dio dio = Dio();
     dio.options.baseUrl = baseUrl;
     dynamic resposta;
 
     try {
-      resposta = await dio.get(endpoint + "$id");
+      await Future.delayed(const Duration(seconds: 2), () async {
+        resposta = await dio.get(endpoint + "$id");
+      });
     } catch (e) {
-      resposta = await dio.get(endpoint + '${113138}');
+      await Future.delayed(const Duration(seconds: 2), () async {
+        resposta = await dio.get(endpoint + '${113138}');
+      });
     }
 
     if (resposta.statusCode == 200) {
@@ -41,13 +47,18 @@ class RepositoryUnity {
 //   return '${manga.data!.images!.jpg!.largeImageUrl}';
 // }
 
-  List<int> mangasId = [
-    13,
-    12,
-    2,
-    11 /**/
-  ];
-  Future<List<MangaApiModel>> recuperaMangas() async {
+  // List<int> mangasId = [
+  //   13,
+  //   12,
+  //   2,
+  //   11,
+  //   14,
+  //   15,
+  //   16,
+  //   10,
+  //   113138 /**/
+  // ];
+  Future<List<MangaApiModel>> recuperaMangas(List<int> mangasId) async {
     List<MangaApiModel> mangas = [];
     for (int id in mangasId) {
       mangas.add(await buscaUmMangaId(id));
@@ -55,4 +66,33 @@ class RepositoryUnity {
 
     return mangas;
   }
+
+//   List<int> mangasIds = [
+//     13,
+//     12,
+//     113138,
+//     11,
+//     2,
+//     14,
+//     15,
+//     16,
+//     10,
+//     1,
+//     2,
+//     3,
+//     4,
+//     123,
+//     124,
+//     1111
+//     /**/
+//   ];
+
+//   Future<List<MangaApiModel>> listandoMangas() async {
+//     List<MangaApiModel> mangas = [];
+//     for (int id in mangasIds) {
+//       mangas.add(await buscaUmMangaId(id));
+//     }
+
+//     return mangas;
+//   }
 }

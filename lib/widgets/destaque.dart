@@ -1,13 +1,13 @@
-import 'package:code_manga/API/mangaApiModel.dart';
-import 'package:code_manga/API/repositoryUnity.dart';
+// import 'package:code_manga/API/mangaApiModel.dart';
+// import 'package:code_manga/API/repositoryUnity.dart';
 import 'package:code_manga/consts/colors/colors.dart';
-import 'package:code_manga/screens/homePage.dart';
+// import 'package:code_manga/screens/homePage.dart';
 import 'package:code_manga/screens/resum.dart';
-import 'dart:math';
+// import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'package:provider/provider.dart';
+// import 'package:provider/provider.dart';
 
 class Destaque extends StatelessWidget {
   final String title;
@@ -65,6 +65,7 @@ class Destaque extends StatelessWidget {
         ),
       ),
       onTap: () {
+        // ignore: unnecessary_null_comparison
         if (title != null) {
           Navigator.of(context).push(
             MaterialPageRoute(
