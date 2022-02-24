@@ -1,7 +1,8 @@
 // import 'package:code_manga/screens/homePage.dart';
 import 'package:code_manga/screens/resum.dart';
 import 'package:flutter/material.dart';
-// import 'package:code_manga/consts/colors/colors.dart';
+import 'package:code_manga/consts/colors/colors.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Avatar extends StatelessWidget {
   final String text;
@@ -58,8 +59,10 @@ class Avatar extends StatelessWidget {
               margin: const EdgeInsets.only(top: 9.0),
               child: Text(
                 text,
-                style: const TextStyle(
-                  color: Colors.white,
+                style: GoogleFonts.poppins(
+                  textStyle: TextStyle(
+                    color: Colors.white,
+                  ),
                 ),
               ),
             )

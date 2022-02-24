@@ -3,6 +3,7 @@ import 'package:code_manga/screens/navHomePage.dart';
 import 'package:code_manga/widgets/cabecalho.dart';
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Resume extends StatelessWidget {
   const Resume(
@@ -57,24 +58,30 @@ class Resume extends StatelessWidget {
                 child: Text(
                   title,
                   textAlign: TextAlign.center,
-                  style: const TextStyle(
-                      color: kprimaryColor,
-                      fontSize: 40.0,
-                      fontWeight: FontWeight.bold),
+                  style: GoogleFonts.poppins(
+                    textStyle: const TextStyle(
+                        color: kprimaryColor,
+                        fontSize: 40.0,
+                        fontWeight: FontWeight.bold),
+                  ),
                 ),
               ),
-              const Padding(
+              Padding(
                 padding: EdgeInsets.only(left: 5, right: 5),
                 child: Text(
                   'Resumo\n',
-                  style: TextStyle(color: kText, fontSize: 24),
+                  style: GoogleFonts.poppins(
+                    textStyle: const TextStyle(color: kText, fontSize: 24),
+                  ),
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 15, right: 15),
                 child: Text(
                   resume,
-                  style: const TextStyle(color: kText, fontSize: 18),
+                  style: GoogleFonts.poppins(
+                    textStyle: const TextStyle(color: kText, fontSize: 18),
+                  ),
                   textAlign: TextAlign.justify,
                 ),
               ),
