@@ -65,7 +65,7 @@ class Data {
   String? status;
   bool? publishing;
   Published? published;
-  double? scored;
+  num? scored;
   int? scoredBy;
   int? rank;
   int? popularity;

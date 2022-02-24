@@ -1,9 +1,9 @@
 import 'package:code_manga/API/repositoryUnity.dart';
 import 'package:code_manga/screens/navHomePage.dart';
 import 'package:flutter/material.dart';
-// import 'package:code_manga/API/repository.dart';
+import 'package:code_manga/API/repositoryList.dart';
 import 'package:provider/provider.dart';
-import 'package:http/http.dart' as http;
+// import 'package:http/http.dart' as http;
 
 Future main() async {
   //print('O link de q preciso eh ${await getImageManga(2)}');
@@ -24,9 +24,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    RepositoryUnity repo = RepositoryUnity();
-    return Provider(
-      create: (context) => repo,
+    return MultiProvider(
+      providers: [
+        Provider<RepositoryUnity>(create: (context) => RepositoryUnity()),
+        Provider<RepositoryList>(create: (context) => RepositoryList()),
+      ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(primarySwatch: Colors.grey),
