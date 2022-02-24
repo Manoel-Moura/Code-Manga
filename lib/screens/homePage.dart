@@ -235,8 +235,51 @@ class _HomePageState extends State<HomePage> {
               //     );
               //   },
               // ),
+              Text(
+                'Manhwa',
+                style: TextStyle(
+                  color: Color(0XFFFFFFFF),
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
               FutureBuilder(
                 future: r.recuperaMangasManhwa(),
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    List<lmam.Data> mangas = snapshot.data as List<lmam.Data>;
+                    return SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: mangas
+                            .map(
+                              (e) => Manga(
+                                title: '${e.title}',
+                                url: '${e.images!.jpg!.imageUrl}',
+                                resume: '${e.synopsis}',
+                              ),
+                            )
+                            .toList(),
+                      ),
+                    );
+                  }
+                  return Center(
+                    child: const CircularProgressIndicator(
+                      color: kprimaryColor,
+                    ),
+                  );
+                },
+              ),
+              Text(
+                'Hentai',
+                style: TextStyle(
+                  color: Color(0XFFFFFFFF),
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              FutureBuilder(
+                future: r.recuperaMangasHentai(),
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
                     List<lmam.Data> mangas = snapshot.data as List<lmam.Data>;

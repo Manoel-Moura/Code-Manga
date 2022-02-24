@@ -22,13 +22,15 @@ class RepositoryList {
   final String baseUrl = 'https://api.jikan.moe';
   final String endpoint = '/v4/manga';
   final String endpointManhwa = '/v4/manga?type=manhwa';
+  final String endpointHentai = '/v4/manga?genres=12';
+  final int time = 35;
 
   Future<ListaMangaApiModel> buscaListaDeMangas() async {
     Dio dio = Dio();
     dio.options.baseUrl = baseUrl;
     // ignore: prefer_typing_uninitialized_variables
     var resposta;
-    await Future.delayed(const Duration(seconds: 10), () async {
+    await Future.delayed(Duration(seconds: time), () async {
       resposta = await dio.get(endpoint);
     });
 
@@ -53,7 +55,7 @@ class RepositoryList {
     dio.options.baseUrl = baseUrl;
     // ignore: prefer_typing_uninitialized_variables
     var resposta;
-    await Future.delayed(const Duration(seconds: 10), () async {
+    await Future.delayed(Duration(seconds: time), () async {
       resposta = await dio.get(endpointManhwa);
     });
 
@@ -71,5 +73,30 @@ class RepositoryList {
     listaDeMangasManhwa = lista.data!.getRange(0, tam).toList();
 
     return listaDeMangasManhwa;
+  }
+
+  Future<ListaMangaApiModel> buscaListaDeMangasHentai() async {
+    Dio dio = Dio();
+    dio.options.baseUrl = baseUrl;
+    // ignore: prefer_typing_uninitialized_variables
+    var resposta;
+    await Future.delayed(Duration(seconds: time), () async {
+      resposta = await dio.get(endpointHentai);
+    });
+
+    if (resposta.statusCode == 200) {
+      return ListaMangaApiModel.fromJson(resposta.data);
+    }
+    return ListaMangaApiModel();
+  }
+
+  Future<List<Data>?> recuperaMangasHentai() async {
+    List<Data>? listaDeMangasHentai = [];
+    ListaMangaApiModel lista = await buscaListaDeMangasHentai();
+    int tam = lista.data!.length;
+
+    listaDeMangasHentai = lista.data!.getRange(0, tam).toList();
+
+    return listaDeMangasHentai;
   }
 }
