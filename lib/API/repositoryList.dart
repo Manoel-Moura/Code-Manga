@@ -59,14 +59,17 @@ class RepositoryList {
     return ListaMangaApiModel();
   }
 
-  Future<List<Data>?> recuperaMangasManhwa() async {
-    List<Data>? listaDeMangasManhwa = [];
-    ListaMangaApiModel lista = await buscaListaDeMangasPorTipo('manhwa');
-    int tam = lista.data!.length;
+  Future<List<Data>?> recuperaMangasPorTipo(String type) async {
+    List<Data>? listaDeMangas = [];
+    ListaMangaApiModel lista = await buscaListaDeMangasPorTipo(type);
 
-    listaDeMangasManhwa = lista.data!.getRange(0, tam).toList();
+    if (lista.data!.isNotEmpty) {
+      int tam = lista.data!.length;
 
-    return listaDeMangasManhwa;
+      listaDeMangas = lista.data!.getRange(0, tam).toList();
+    }
+
+    return listaDeMangas;
   }
 
   /// Buscando Por Generos
@@ -88,24 +91,17 @@ class RepositoryList {
     return ListaMangaApiModel();
   }
 
-  Future<List<Data>?> recuperaMangasHentai() async {
-    List<Data>? listaDeMangasHentai = [];
-    ListaMangaApiModel lista = await buscaListaDeMangasPorGenero(12);
-    int tam = lista.data!.length;
+  Future<List<Data>?> recuperaMangasPorGenero(int genres) async {
+    List<Data>? listaDeMangas = [];
+    ListaMangaApiModel lista = await buscaListaDeMangasPorGenero(genres);
 
-    listaDeMangasHentai = lista.data!.getRange(0, tam).toList();
+    if (lista.data!.isNotEmpty) {
+      int tam = lista.data!.length;
 
-    return listaDeMangasHentai;
-  }
+      listaDeMangas = lista.data!.getRange(0, tam).toList();
+    }
 
-  Future<List<Data>?> recuperaMangasEcchi() async {
-    List<Data>? listaDeMangasEcchi = [];
-    ListaMangaApiModel lista = await buscaListaDeMangasPorGenero(9);
-    int tam = lista.data!.length;
-
-    listaDeMangasEcchi = lista.data!.getRange(0, tam).toList();
-
-    return listaDeMangasEcchi;
+    return listaDeMangas;
   }
 
   /// Buscando Mangas Por Nome
@@ -126,13 +122,16 @@ class RepositoryList {
     return ListaMangaApiModel();
   }
 
-  Future<List<Data>?> recuperaMangasOnePiece() async {
-    List<Data>? listaDeMangasOnePiece = [];
-    ListaMangaApiModel lista = await buscaListaMangasPorNome('One Piece');
-    int tam = lista.data!.length;
+  Future<List<Data>?> recuperaMangasPorNome(String name) async {
+    List<Data>? listaDeMangas = [];
+    ListaMangaApiModel lista = await buscaListaMangasPorNome(name);
 
-    listaDeMangasOnePiece = lista.data!.getRange(0, tam).toList();
+    if (lista.data!.isNotEmpty) {
+      int tam = lista.data!.length;
 
-    return listaDeMangasOnePiece;
+      listaDeMangas = lista.data!.getRange(0, tam).toList();
+    }
+
+    return listaDeMangas;
   }
 }

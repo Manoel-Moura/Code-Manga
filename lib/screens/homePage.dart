@@ -109,10 +109,10 @@ class _HomePageState extends State<HomePage> {
                   12,
                   2,
                   11,
-                  // 14,
-                  // 15,
-                  // 16,
-                  // 10,
+                  14,
+                  15,
+                  16,
+                  10,
                   113138 /**/
                 ]),
                 builder: (context, snapshot) {
@@ -139,70 +139,59 @@ class _HomePageState extends State<HomePage> {
                   );
                 },
               ),
-              FutureBuilder(
-                future: ru.recuperaMangas([
-                  // 13,
-                  // 12,
-                  // 113138,
-                  // 11,
-                  // 2,
-                  14,
-                  15,
-                  16,
-                  10,
-                  1,
-                  2,
-                  3,
-                  4,
-                  123,
-                  124,
-<<<<<<< Updated upstream
-                  // 11117,
-                  // 65842,
-                  // 96099,
-                  // 103224,
-                  // 171529,
-                  // 196018,
-                  // 98911,
-                  // 94823,
-                  // 95614,
-=======
-                  11117,
-                  65742,
-                  90099,
-                  13224,
-                  11529,
-                  10018,
-                  96911,
-                  90823,
-                  97614,
->>>>>>> Stashed changes
-                  /**/
-                ]),
-                builder: (context, snapshot) {
-                  if (snapshot.hasData) {
-                    List<MangaApiModel> mangas =
-                        snapshot.data as List<MangaApiModel>;
-                    return SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
-                        children: mangas
-                            .map(
-                              (e) => Manga(
-                                title: '${e.data!.title}',
-                                url: '${e.data!.images!.jpg!.imageUrl}',
-                                resume: '${e.data!.synopsis}',
-                              ),
-                            )
-                            .toList(),
-                      ),
-                    );
-                  }
-                  return const CircularProgressIndicator(
-                    color: kprimaryColor,
-                  );
-                },
-              ),
+
+              // FutureBuilder(
+              //   future: ru.recuperaMangas([
+              //     // 13,
+              //     // 12,
+              //     // 113138,
+              //     // 11,
+              //     // 2,
+              //     14,
+              //     15,
+              //     16,
+              //     10,
+              //     1,
+              //     2,
+              //     3,
+              //     4,
+              //     123,
+              //     124,
+              //     // 11117,
+              //     // 65842,
+              //     // 96099,
+              //     // 103224,
+              //     // 171529,
+              //     // 196018,
+              //     // 98911,
+              //     // 94823,
+              //     // 95614,
+              //     /**/
+              //   ]),
+              //   builder: (context, snapshot) {
+              //     if (snapshot.hasData) {
+              //       List<MangaApiModel> mangas =
+              //           snapshot.data as List<MangaApiModel>;
+              //       return SingleChildScrollView(
+              //         scrollDirection: Axis.horizontal,
+              //         child: Row(
+              //           children: mangas
+              //               .map(
+              //                 (e) => Manga(
+              //                   title: '${e.data!.title}',
+              //                   url: '${e.data!.images!.jpg!.imageUrl}',
+              //                   resume: '${e.data!.synopsis}',
+              //                 ),
+              //               )
+              //               .toList(),
+              //         ),
+              //       );
+              //     }
+              //     return const CircularProgressIndicator(
+              //       color: kprimaryColor,
+              //     );
+              //   },
+              // ),
               // FutureBuilder(
               //   future: ru.recuperaMangas([
               //     45832,
@@ -256,24 +245,83 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               FutureBuilder(
-                future: r.recuperaMangasManhwa(),
+                future: r.recuperaMangasPorTipo('mahwa'),
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
                     List<lmam.Data> mangas = snapshot.data as List<lmam.Data>;
-                    return SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
-                        children: mangas
-                            .map(
-                              (e) => Manga(
-                                title: '${e.title}',
-                                url: '${e.images!.jpg!.imageUrl}',
-                                resume: '${e.synopsis}',
-                              ),
-                            )
-                            .toList(),
-                      ),
-                    );
+                    if (mangas.isNotEmpty) {
+                      return SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          children: mangas
+                              .map(
+                                (e) => Manga(
+                                  title: '${e.title}',
+                                  url: '${e.images!.jpg!.imageUrl}',
+                                  resume: '${e.synopsis}',
+                                ),
+                              )
+                              .toList(),
+                        ),
+                      );
+                    } else if (mangas.isEmpty) {
+                      return Center(
+                        child: Text(
+                          'Não foi encontrado',
+                          style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.red),
+                        ),
+                      );
+                    }
+                  }
+                  return Center(
+                    child: const CircularProgressIndicator(
+                      color: kprimaryColor,
+                    ),
+                  );
+                },
+              ),
+              Text(
+                'Aventura',
+                style: TextStyle(
+                  color: Color(0XFFFFFFFF),
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              FutureBuilder(
+                future: r.recuperaMangasPorGenero(1),
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    List<lmam.Data> mangas = snapshot.data as List<lmam.Data>;
+                    if (mangas.isNotEmpty) {
+                      return SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          children: mangas
+                              .map(
+                                (e) => Manga(
+                                  title: '${e.title}',
+                                  url: '${e.images!.jpg!.imageUrl}',
+                                  resume: '${e.synopsis}',
+                                ),
+                              )
+                              .toList(),
+                        ),
+                      );
+                    } else if (mangas.isEmpty) {
+                      return Center(
+                        child: Text(
+                          'Não foi encontrado',
+                          style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.red),
+                        ),
+                      );
+                    }
                   }
                   return Center(
                     child: const CircularProgressIndicator(
@@ -348,39 +396,51 @@ class _HomePageState extends State<HomePage> {
               //     );
               //   },
               // ),
-              Text(
-                'One Piece',
-                style: TextStyle(
-                  color: Color(0XFFFFFFFF),
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              FutureBuilder(
-                future: r.recuperaMangasOnePiece(),
-                builder: (context, snapshot) {
-                  if (snapshot.hasData) {
-                    List<lmam.Data> mangas = snapshot.data as List<lmam.Data>;
-                    return SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
-                        children: mangas
-                            .map(
-                              (e) => Manga(
-                                title: '${e.title}',
-                                url: '${e.images!.jpg!.imageUrl}',
-                                resume: '${e.synopsis}',
-                              ),
-                            )
-                            .toList(),
-                      ),
-                    );
-                  }
-                  return const CircularProgressIndicator(
-                    color: kprimaryColor,
-                  );
-                },
-              ),
+              // Text(
+              //   'One Piece',
+              //   style: TextStyle(
+              //     color: Color(0XFFFFFFFF),
+              //     fontSize: 24,
+              //     fontWeight: FontWeight.bold,
+              //   ),
+              // ),
+              // FutureBuilder(
+              //   future: r.recuperaMangasPorNome('one Piece'),
+              //   builder: (context, snapshot) {
+              //     if (snapshot.hasData) {
+              //       List<lmam.Data> mangas = snapshot.data as List<lmam.Data>;
+              //       if (mangas.isNotEmpty) {
+              //         return SingleChildScrollView(
+              //           scrollDirection: Axis.horizontal,
+              //           child: Row(
+              //             children: mangas
+              //                 .map(
+              //                   (e) => Manga(
+              //                     title: '${e.title}',
+              //                     url: '${e.images!.jpg!.imageUrl}',
+              //                     resume: '${e.synopsis}',
+              //                   ),
+              //                 )
+              //                 .toList(),
+              //           ),
+              //         );
+              //       } else if (mangas.isEmpty) {
+              //         return Center(
+              //           child: Text(
+              //             'Não foi encontrado',
+              //             style: TextStyle(
+              //                 fontSize: 20,
+              //                 fontWeight: FontWeight.bold,
+              //                 color: Colors.red),
+              //           ),
+              //         );
+              //       }
+              //     }
+              //     return const CircularProgressIndicator(
+              //       color: kprimaryColor,
+              //     );
+              //   },
+              // ),
             ],
           ),
         ),
