@@ -270,8 +270,74 @@ class _HomePageState extends State<HomePage> {
                   );
                 },
               ),
+              // Text(
+              //   'Hentai',
+              //   style: TextStyle(
+              //     color: Color(0XFFFFFFFF),
+              //     fontSize: 24,
+              //     fontWeight: FontWeight.bold,
+              //   ),
+              // ),
+              // FutureBuilder(
+              //   future: r.recuperaMangasHentai(),
+              //   builder: (context, snapshot) {
+              //     if (snapshot.hasData) {
+              //       List<lmam.Data> mangas = snapshot.data as List<lmam.Data>;
+              //       return SingleChildScrollView(
+              //         scrollDirection: Axis.horizontal,
+              //         child: Row(
+              //           children: mangas
+              //               .map(
+              //                 (e) => Manga(
+              //                   title: '${e.title}',
+              //                   url: '${e.images!.jpg!.imageUrl}',
+              //                   resume: '${e.synopsis}',
+              //                 ),
+              //               )
+              //               .toList(),
+              //         ),
+              //       );
+              //     }
+              //     return const CircularProgressIndicator(
+              //       color: kprimaryColor,
+              //     );
+              //   },
+              // ),
+              // Text(
+              //   'Ecchi',
+              //   style: TextStyle(
+              //     color: Color(0XFFFFFFFF),
+              //     fontSize: 24,
+              //     fontWeight: FontWeight.bold,
+              //   ),
+              // ),
+              // FutureBuilder(
+              //   future: r.recuperaMangasEcchi(),
+              //   builder: (context, snapshot) {
+              //     if (snapshot.hasData) {
+              //       List<lmam.Data> mangas = snapshot.data as List<lmam.Data>;
+              //       return SingleChildScrollView(
+              //         scrollDirection: Axis.horizontal,
+              //         child: Row(
+              //           children: mangas
+              //               .map(
+              //                 (e) => Manga(
+              //                   title: '${e.title}',
+              //                   url: '${e.images!.jpg!.imageUrl}',
+              //                   resume: '${e.synopsis}',
+              //                 ),
+              //               )
+              //               .toList(),
+              //         ),
+              //       );
+              //     }
+              //     return const CircularProgressIndicator(
+              //       color: kprimaryColor,
+              //     );
+              //   },
+              // ),
               Text(
-                'Hentai',
+                'One Piece',
                 style: TextStyle(
                   color: Color(0XFFFFFFFF),
                   fontSize: 24,
@@ -279,7 +345,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               FutureBuilder(
-                future: r.recuperaMangasHentai(),
+                future: r.recuperaMangasOnePiece(),
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
                     List<lmam.Data> mangas = snapshot.data as List<lmam.Data>;
