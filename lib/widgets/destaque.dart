@@ -1,20 +1,26 @@
-// import 'package:code_manga/API/mangaApiModel.dart';
-// import 'package:code_manga/API/repositoryUnity.dart';
 import 'package:code_manga/consts/colors/colors.dart';
-// import 'package:code_manga/screens/homePage.dart';
+
 import 'package:code_manga/screens/resum.dart';
-// import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-// import 'package:provider/provider.dart';
 
 class Destaque extends StatelessWidget {
   final String title;
   final String url;
   final String resume;
+  final String nCapitulo;
+  final String nVolumes;
+  final String ranking;
+
   const Destaque(
-      {Key? key, required this.title, required this.url, required this.resume})
+      {Key? key,
+      required this.title,
+      required this.url,
+      required this.resume,
+      required this.nCapitulo,
+      required this.nVolumes,
+      required this.ranking})
       : super(key: key);
 
   @override
@@ -51,6 +57,7 @@ class Destaque extends StatelessWidget {
                   padding: const EdgeInsets.only(bottom: 15),
                   child: Text(
                     title,
+                    textAlign: TextAlign.center,
                     style: GoogleFonts.poppins(
                       textStyle: const TextStyle(
                           color: kprimaryColor,
@@ -73,6 +80,9 @@ class Destaque extends StatelessWidget {
                 resume: resume,
                 title: title,
                 url: url,
+                nCapitulo: nCapitulo,
+                nVolumes: nVolumes,
+                ranking: ranking,
               ),
             ),
           );

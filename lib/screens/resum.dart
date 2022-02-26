@@ -1,4 +1,3 @@
-import 'dart:html';
 import 'dart:ui';
 
 import 'package:code_manga/consts/colors/colors.dart';
@@ -10,12 +9,21 @@ import 'package:google_fonts/google_fonts.dart';
 
 class Resume extends StatelessWidget {
   const Resume(
-      {Key? key, required this.url, required this.title, required this.resume})
+      {Key? key,
+      required this.url,
+      required this.title,
+      required this.resume,
+      required this.nCapitulo,
+      required this.nVolumes,
+      required this.ranking})
       : super(key: key);
 
   final String url;
   final String title;
   final String resume;
+  final String nCapitulo;
+  final String nVolumes;
+  final String ranking;
 
   @override
   Widget build(BuildContext context) {
@@ -61,8 +69,7 @@ class Resume extends StatelessWidget {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
                         image: DecorationImage(
-                          image: NetworkImage(
-                              'https://cdn.myanimelist.net//images//manga//3//117681.jpg'),
+                          image: NetworkImage(url),
                         ),
                       ),
                     ),
@@ -77,7 +84,8 @@ class Resume extends StatelessWidget {
                                 bottom: 16,
                               ),
                               child: Text(
-                                "Naruto Shippuden",
+                                title,
+                                textAlign: TextAlign.justify,
                                 style: GoogleFonts.poppins(
                                   textStyle: const TextStyle(
                                     color: Colors.white,
@@ -108,10 +116,15 @@ class Resume extends StatelessWidget {
                                 margin: const EdgeInsets.only(
                                   left: 10,
                                 ),
-                                child: const Text(
-                                  "12",
-                                  style: TextStyle(
-                                    color: Colors.white,
+                                child: Text(
+                                  "${nCapitulo}" == 'null'
+                                      ? 'unavailable'
+                                      : "${nCapitulo}",
+                                  style: GoogleFonts.poppins(
+                                    textStyle: const TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 14,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -138,7 +151,9 @@ class Resume extends StatelessWidget {
                                   left: 17,
                                 ),
                                 child: Text(
-                                  "10",
+                                  "${nVolumes}" == 'null'
+                                      ? 'unavailable'
+                                      : "${nVolumes}",
                                   style: GoogleFonts.poppins(
                                     textStyle: const TextStyle(
                                       color: Colors.white,
@@ -170,7 +185,9 @@ class Resume extends StatelessWidget {
                                   left: 23,
                                 ),
                                 child: Text(
-                                  "10",
+                                  "${ranking}" == 'null'
+                                      ? 'unavailable'
+                                      : "${ranking}",
                                   style: GoogleFonts.poppins(
                                     textStyle: TextStyle(
                                       color: Colors.white,
@@ -191,7 +208,7 @@ class Resume extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    'Resumo',
+                    'Resume',
                     style: GoogleFonts.poppins(
                       textStyle: TextStyle(
                         color: Colors.white,
@@ -210,7 +227,8 @@ class Resume extends StatelessWidget {
                       18,
                     ),
                     child: Text(
-                      'This is a good anime yeah i don´t know what to type here because i´m really sad cuz i want to sleep but i can´t cuz a wanna to finish this shit.This is a good anime yeah i don´t know what to type here because i´m really sad cuz i want to sleep but i can´t cuz a wanna to finish this shit.This is a good anime yeah i don´t know what to type here because i´m really sad cuz i want to sleep but i can´t cuz a wanna to finish this shit.',
+                      resume,
+                      textAlign: TextAlign.justify,
                       style: GoogleFonts.poppins(
                         textStyle: const TextStyle(
                           color: Colors.white60,

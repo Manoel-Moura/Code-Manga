@@ -1,28 +1,21 @@
 // ignore_for_file: file_names
 
-// import 'dart:io';
 import 'dart:ui';
 
 import 'package:code_manga/API/repositoryList.dart';
 import 'package:code_manga/API/listaMangaApiModel.dart' as lmam;
 import 'package:code_manga/API/repositoryUnity.dart';
 import 'package:code_manga/API/mangaApiModel.dart';
-// import 'package:code_manga/API/repository.dart';
 import 'package:code_manga/consts/colors/colors.dart';
 import 'package:code_manga/screens/loginPage.dart';
 import 'package:code_manga/widgets/avatar.dart';
 import 'package:code_manga/widgets/cabecalho.dart';
-import 'package:code_manga/widgets/categoria.dart';
 import 'package:code_manga/widgets/destaque.dart';
 import 'dart:math';
-// import 'package:code_manga/widgets/input.dart';
 import 'package:code_manga/widgets/manga.dart';
 import 'package:flutter/cupertino.dart';
-// import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:path/path.dart';
-// import 'package:google_fonts/google_fonts.dart';
-// import 'package:code_manga/widgets/button.dart';
+
 import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
@@ -56,13 +49,6 @@ class _HomePageState extends State<HomePage> {
   void novCategoria(int valor) async {
     setState(() {
       genero = valor;
-      randomNumber = random.nextInt(12) + 1;
-    });
-  }
-
-  void novDestaque() async {
-    setState(() {
-      randomNumber = random.nextInt(12) + 1;
     });
   }
 
@@ -116,11 +102,14 @@ class _HomePageState extends State<HomePage> {
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
                     MangaApiModel manga = snapshot.data as MangaApiModel;
-                    novDestaque();
+                    randomNumber = random.nextInt(12);
                     return Destaque(
                       title: '${manga.data!.title}',
                       url: '${manga.data!.images!.jpg!.imageUrl}',
                       resume: '${manga.data!.synopsis}',
+                      nCapitulo: '${manga.data!.chapters}',
+                      nVolumes: '${manga.data!.volumes}',
+                      ranking: '${manga.data!.rank}',
                     );
                   }
                   return const CircularProgressIndicator(
@@ -159,6 +148,9 @@ class _HomePageState extends State<HomePage> {
                                 text: '${e.data!.title}',
                                 url: '${e.data!.images!.jpg!.imageUrl}',
                                 resume: '${e.data!.synopsis}',
+                                nCapitulo: '${e.data!.chapters}',
+                                nVolumes: '${e.data!.volumes}',
+                                ranking: '${e.data!.rank}',
                               ),
                             )
                             .toList(),
@@ -171,118 +163,6 @@ class _HomePageState extends State<HomePage> {
                 },
               ),
 
-              // FutureBuilder(
-              //   future: ru.recuperaMangas([
-              //     // 13,
-              //     // 12,
-              //     // 113138,
-              //     // 11,
-              //     // 2,
-              //     14,
-              //     15,
-              //     16,
-              //     10,
-              //     1,
-              //     2,
-              //     3,
-              //     4,
-              //     123,
-              //     124,
-              //     // 11117,
-              //     // 65842,
-              //     // 96099,
-              //     // 103224,
-              //     // 171529,
-              //     // 196018,
-              //     // 98911,
-              //     // 94823,
-              //     // 95614,
-              //     /**/
-              //   ]),
-              //   builder: (context, snapshot) {
-              //     if (snapshot.hasData) {
-              //       List<MangaApiModel> mangas =
-              //           snapshot.data as List<MangaApiModel>;
-              //       return SingleChildScrollView(
-              //         scrollDirection: Axis.horizontal,
-              //         child: Row(
-              //           children: mangas
-              //               .map(
-              //                 (e) => Manga(
-              //                   title: '${e.data!.title}',
-              //                   url: '${e.data!.images!.jpg!.imageUrl}',
-              //                   resume: '${e.data!.synopsis}',
-              //                 ),
-              //               )
-              //               .toList(),
-              //         ),
-              //       );
-              //     }
-              //     return const CircularProgressIndicator(
-              //       color: kprimaryColor,
-              //     );
-              //   },
-              // ),
-              // FutureBuilder(
-              //   future: ru.recuperaMangas([
-              //     45832,
-              //     76612,
-              //     62822,
-              //     144548,
-              //     478188,
-              //     80004,
-              //     135985,
-              //     420597,
-              //     83258,
-              //     61901,
-              //     66331,
-              //     89084,
-              //     10842,
-              //     13633,
-              //     37247,
-              //     71665,
-              //     58287,
-              //   ]),
-              //   builder: (context, snapshot) {
-              //     if (snapshot.hasData) {
-              //       List<MangaApiModel> mangas =
-              //           snapshot.data as List<MangaApiModel>;
-              //       return SingleChildScrollView(
-              //         scrollDirection: Axis.horizontal,
-              //         child: Row(
-              //           children: mangas
-              //               .map(
-              //                 (e) => Manga(
-              //                   title: '${e.data!.title}',
-              //                   url: '${e.data!.images!.jpg!.imageUrl}',
-              //                   resume: '${e.data!.synopsis}',
-              //                 ),
-              //               )
-              //               .toList(),
-              //         ),
-              //       );
-              //     }
-              //     return const CircularProgressIndicator(
-              //       color: kprimaryColor,
-              //     );
-              //   },
-              // ),
-              // GestureDetector(
-              //   child: Padding(
-              //     padding: const EdgeInsets.all(10),
-              //     child: Text(
-              //       'Aventura',
-              //       style: const TextStyle(
-              //         color: Color(cor),
-              //         fontSize: 24.0,
-              //         fontWeight: FontWeight.bold,
-              //       ),
-              //     ),
-              //   ),
-              //   onTap: () {
-              //     novCategoria(1);
-              //   },
-              // ),
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
@@ -493,6 +373,9 @@ class _HomePageState extends State<HomePage> {
                                   title: '${e.title}',
                                   url: '${e.images!.jpg!.imageUrl}',
                                   resume: '${e.synopsis}',
+                                  nCapitulo: '${e.chapters}',
+                                  nVolumes: '${e.volumes}',
+                                  ranking: '${e.rank}',
                                 ),
                               )
                               .toList(),
@@ -517,165 +400,6 @@ class _HomePageState extends State<HomePage> {
                   );
                 },
               )
-
-              // Text(
-              //   'Aventura',
-              //   style: TextStyle(
-              //     color: Color(0XFFFFFFFF),
-              //     fontSize: 24,
-              //     fontWeight: FontWeight.bold,
-              //   ),
-              // ),
-              // FutureBuilder(
-              //   future: r.recuperaMangasPorGenero(1),
-              //   builder: (context, snapshot) {
-              //     if (snapshot.hasData) {
-              //       List<lmam.Data> mangas = snapshot.data as List<lmam.Data>;
-              //       if (mangas.isNotEmpty) {
-              //         return SingleChildScrollView(
-              //           scrollDirection: Axis.horizontal,
-              //           child: Row(
-              //             children: mangas
-              //                 .map(
-              //                   (e) => Manga(
-              //                     title: '${e.title}',
-              //                     url: '${e.images!.jpg!.imageUrl}',
-              //                     resume: '${e.synopsis}',
-              //                   ),
-              //                 )
-              //                 .toList(),
-              //           ),
-              //         );
-              //       } else if (mangas.isEmpty) {
-              //         return Center(
-              //           child: Text(
-              //             'Não foi encontrado',
-              //             style: TextStyle(
-              //                 fontSize: 20,
-              //                 fontWeight: FontWeight.bold,
-              //                 color: Colors.red),
-              //           ),
-              //         );
-              //       }
-              //     }
-              //     return Center(
-              //       child: const CircularProgressIndicator(
-              //         color: kprimaryColor,
-              //       ),
-              //     );
-              //   },
-              // ),
-              // Text(
-              //   'Hentai',
-              //   style: TextStyle(
-              //     color: Color(0XFFFFFFFF),
-              //     fontSize: 24,
-              //     fontWeight: FontWeight.bold,
-              //   ),
-              // ),
-              // FutureBuilder(
-              //   future: r.recuperaMangasHentai(),
-              //   builder: (context, snapshot) {
-              //     if (snapshot.hasData) {
-              //       List<lmam.Data> mangas = snapshot.data as List<lmam.Data>;
-              //       return SingleChildScrollView(
-              //         scrollDirection: Axis.horizontal,
-              //         child: Row(
-              //           children: mangas
-              //               .map(
-              //                 (e) => Manga(
-              //                   title: '${e.title}',
-              //                   url: '${e.images!.jpg!.imageUrl}',
-              //                   resume: '${e.synopsis}',
-              //                 ),
-              //               )
-              //               .toList(),
-              //         ),
-              //       );
-              //     }
-              //     return const CircularProgressIndicator(
-              //       color: kprimaryColor,
-              //     );
-              //   },
-              // ),
-              // Text(
-              //   'Ecchi',
-              //   style: TextStyle(
-              //     color: Color(0XFFFFFFFF),
-              //     fontSize: 24,
-              //     fontWeight: FontWeight.bold,
-              //   ),
-              // ),
-              // FutureBuilder(
-              //   future: r.recuperaMangasEcchi(),
-              //   builder: (context, snapshot) {
-              //     if (snapshot.hasData) {
-              //       List<lmam.Data> mangas = snapshot.data as List<lmam.Data>;
-              //       return SingleChildScrollView(
-              //         scrollDirection: Axis.horizontal,
-              //         child: Row(
-              //           children: mangas
-              //               .map(
-              //                 (e) => Manga(
-              //                   title: '${e.title}',
-              //                   url: '${e.images!.jpg!.imageUrl}',
-              //                   resume: '${e.synopsis}',
-              //                 ),
-              //               )
-              //               .toList(),
-              //         ),
-              //       );
-              //     }
-              //     return const CircularProgressIndicator(
-              //       color: kprimaryColor,
-              //     );
-              //   },
-              // ),
-              // Text(
-              //   'One Piece',
-              //   style: TextStyle(
-              //     color: Color(0XFFFFFFFF),
-              //     fontSize: 24,
-              //     fontWeight: FontWeight.bold,
-              //   ),
-              // ),
-              // FutureBuilder(
-              //   future: r.recuperaMangasPorNome('one Piece'),
-              //   builder: (context, snapshot) {
-              //     if (snapshot.hasData) {
-              //       List<lmam.Data> mangas = snapshot.data as List<lmam.Data>;
-              //       if (mangas.isNotEmpty) {
-              //         return SingleChildScrollView(
-              //           scrollDirection: Axis.horizontal,
-              //           child: Row(
-              //             children: mangas
-              //                 .map(
-              //                   (e) => Manga(
-              //                     title: '${e.title}',
-              //                     url: '${e.images!.jpg!.imageUrl}',
-              //                     resume: '${e.synopsis}',
-              //                   ),
-              //                 )
-              //                 .toList(),
-              //           ),
-              //         );
-              //       } else if (mangas.isEmpty) {
-              //         return Center(
-              //           child: Text(
-              //             'Não foi encontrado',
-              //             style: TextStyle(
-              //                 fontSize: 20,
-              //                 fontWeight: FontWeight.bold,
-              //                 color: Colors.red),
-              //           ),
-              //         );
-              //       }
-              //     }
-              //     return const CircularProgressIndicator(
-              //       color: kprimaryColor,
-              //     );
-              //   },
-              // ),
             ],
           ),
         ),
@@ -683,26 +407,3 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
-
-// class CategoriaOP extends StatelessWidget {
-//   const CategoriaOP({Key? key}) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(
-//       height: 60.0,
-//       decoration: BoxDecoration(
-//           color: Colors.redAccent,
-//           // border: Border.all(color: Colors.pink, width: 10),
-//           shape: BoxShape.circle),
-//       child: Center(
-//         child: Text(
-//           'All',
-//           style: TextStyle(
-//             fontSize: 22.0,
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }

@@ -1,5 +1,3 @@
-// import 'dart:html';
-
 import 'package:code_manga/screens/resum.dart';
 import 'package:flutter/material.dart';
 
@@ -7,8 +5,17 @@ class Manga extends StatelessWidget {
   final String title;
   final String resume;
   final String url;
+  final String nCapitulo;
+  final String nVolumes;
+  final String ranking;
   const Manga(
-      {Key? key, required this.url, required this.title, required this.resume})
+      {Key? key,
+      required this.url,
+      required this.title,
+      required this.nCapitulo,
+      required this.nVolumes,
+      required this.ranking,
+      required this.resume})
       : super(key: key);
 
   @override
@@ -37,6 +44,9 @@ class Manga extends StatelessWidget {
                 resume: resume,
                 title: title,
                 url: url,
+                nCapitulo: nCapitulo,
+                nVolumes: nVolumes,
+                ranking: ranking,
               ),
             ),
           );

@@ -1,31 +1,25 @@
 // import 'package:code_manga/screens/homePage.dart';
 import 'package:code_manga/screens/resum.dart';
 import 'package:flutter/material.dart';
-import 'package:code_manga/consts/colors/colors.dart';
+
 import 'package:google_fonts/google_fonts.dart';
 
 class Avatar extends StatelessWidget {
   final String text;
   final String url;
   final String resume;
+  final String nCapitulo;
+  final String nVolumes;
+  final String ranking;
   const Avatar(
-      {Key? key, required this.text, required this.url, required this.resume})
+      {Key? key,
+      required this.text,
+      required this.url,
+      required this.nCapitulo,
+      required this.nVolumes,
+      required this.ranking,
+      required this.resume})
       : super(key: key);
-
-  // Padding(
-  //       padding:
-  //           const EdgeInsets.only(top: 18, left: 10, right: 10, bottom: 18),
-  //       child: CircleAvatar(
-  //         backgroundImage: NetworkImage(url),
-  //         radius: 50,
-  //         child: Text(
-  //           text,
-  //           style: const TextStyle(
-  //               color: kText, fontSize: 20.0, fontWeight: FontWeight.bold),
-  //         ),
-  //         // foregroundColor: kText,
-  //       ),
-  //     );
 
   @override
   Widget build(BuildContext context) {
@@ -78,6 +72,9 @@ class Avatar extends StatelessWidget {
                 resume: resume,
                 title: text,
                 url: url,
+                nCapitulo: nCapitulo,
+                nVolumes: nVolumes,
+                ranking: ranking,
               ),
             ),
           );
