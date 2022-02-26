@@ -12,12 +12,15 @@ import 'package:code_manga/consts/colors/colors.dart';
 import 'package:code_manga/screens/loginPage.dart';
 import 'package:code_manga/widgets/avatar.dart';
 import 'package:code_manga/widgets/cabecalho.dart';
+import 'package:code_manga/widgets/categoria.dart';
 import 'package:code_manga/widgets/destaque.dart';
+import 'dart:math';
 // import 'package:code_manga/widgets/input.dart';
 import 'package:code_manga/widgets/manga.dart';
 import 'package:flutter/cupertino.dart';
 // import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:path/path.dart';
 // import 'package:google_fonts/google_fonts.dart';
 // import 'package:code_manga/widgets/button.dart';
 import 'package:provider/provider.dart';
@@ -31,12 +34,43 @@ class HomePage extends StatefulWidget {
 
 List<String>? title = [];
 List<String>? url = [];
+List<int>? mangasDestaque = [
+  13,
+  104565,
+  23390,
+  12,
+  21,
+  30859,
+  44347,
+  96792,
+  11,
+  86337,
+  116778,
+  75989,
+];
+Random random = Random();
+int randomNumber = random.nextInt(12);
+int genero = 5;
 
 class _HomePageState extends State<HomePage> {
+  void novCategoria(int valor) async {
+    setState(() {
+      genero = valor;
+      randomNumber = random.nextInt(12) + 1;
+    });
+  }
+
+  void novDestaque() async {
+    setState(() {
+      randomNumber = random.nextInt(12) + 1;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     RepositoryList r = Provider.of(context);
     RepositoryUnity ru = Provider.of(context);
+
     return SafeArea(
       child: Scaffold(
         backgroundColor: const Color.fromRGBO(31, 31, 31, 0.9),
@@ -78,23 +112,15 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             children: [
               FutureBuilder(
-                future: r.recuperaMangas(),
+                future: ru.buscaUmMangaId(mangasDestaque![randomNumber]),
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
-                    List<lmam.Data> mangas = snapshot.data as List<lmam.Data>;
-                    return SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
-                        children: mangas
-                            .map(
-                              (e) => Destaque(
-                                title: '${e.title}',
-                                url: '${e.images!.jpg!.imageUrl}',
-                                resume: '${e.synopsis}',
-                              ),
-                            )
-                            .toList(),
-                      ),
+                    MangaApiModel manga = snapshot.data as MangaApiModel;
+                    novDestaque();
+                    return Destaque(
+                      title: '${manga.data!.title}',
+                      url: '${manga.data!.images!.jpg!.imageUrl}',
+                      resume: '${manga.data!.synopsis}',
                     );
                   }
                   return const CircularProgressIndicator(
@@ -106,14 +132,19 @@ class _HomePageState extends State<HomePage> {
               FutureBuilder(
                 future: ru.recuperaMangas([
                   13,
+                  113138,
+                  104565,
+                  23390,
                   12,
-                  2,
+                  21,
+                  30859,
+                  44347,
+                  96792,
                   11,
-                  14,
-                  15,
-                  16,
-                  10,
-                  113138 /**/
+                  86337,
+                  116778,
+                  75989,
+                  /**/
                 ]),
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
@@ -236,16 +267,219 @@ class _HomePageState extends State<HomePage> {
               //     );
               //   },
               // ),
-              Text(
-                'Manhwa',
-                style: TextStyle(
-                  color: Color(0XFFFFFFFF),
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
+              // GestureDetector(
+              //   child: Padding(
+              //     padding: const EdgeInsets.all(10),
+              //     child: Text(
+              //       'Aventura',
+              //       style: const TextStyle(
+              //         color: Color(cor),
+              //         fontSize: 24.0,
+              //         fontWeight: FontWeight.bold,
+              //       ),
+              //     ),
+              //   ),
+              //   onTap: () {
+              //     novCategoria(1);
+              //   },
+              // ),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        novCategoria(1);
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                            left: 15, right: 15, bottom: 15),
+                        child: Text(
+                          'Action',
+                          style: const TextStyle(
+                            color: kText,
+                            fontSize: 24.0,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        novCategoria(2);
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                            left: 15, right: 15, bottom: 15),
+                        child: Text(
+                          'Adventure',
+                          style: const TextStyle(
+                            color: kText,
+                            fontSize: 24.0,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        novCategoria(8);
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                            left: 15, right: 15, bottom: 15),
+                        child: Text(
+                          'Drama',
+                          style: const TextStyle(
+                            color: kText,
+                            fontSize: 24.0,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        novCategoria(10);
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                            left: 15, right: 15, bottom: 15),
+                        child: Text(
+                          'Fantasy',
+                          style: const TextStyle(
+                            color: kText,
+                            fontSize: 24.0,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        novCategoria(14);
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                            left: 15, right: 15, bottom: 15),
+                        child: Text(
+                          'Horror',
+                          style: const TextStyle(
+                            color: kText,
+                            fontSize: 24.0,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        novCategoria(37);
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                            left: 15, right: 15, bottom: 15),
+                        child: Text(
+                          'Supernatural',
+                          style: const TextStyle(
+                            color: kText,
+                            fontSize: 24.0,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        novCategoria(4);
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                            left: 15, right: 15, bottom: 15),
+                        child: Text(
+                          'Comedy',
+                          style: const TextStyle(
+                            color: kText,
+                            fontSize: 24.0,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        novCategoria(9);
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                            left: 15, right: 15, bottom: 15),
+                        child: Text(
+                          'Harem',
+                          style: const TextStyle(
+                            color: kText,
+                            fontSize: 24.0,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        novCategoria(35);
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                            left: 15, right: 15, bottom: 15),
+                        child: Text(
+                          'Ecchi',
+                          style: const TextStyle(
+                            color: kText,
+                            fontSize: 24.0,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        novCategoria(49);
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                            left: 15, right: 15, bottom: 15),
+                        child: Text(
+                          'Erotico',
+                          style: const TextStyle(
+                            color: kText,
+                            fontSize: 24.0,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        novCategoria(12);
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                            left: 15, right: 15, bottom: 15),
+                        child: Text(
+                          '+18',
+                          style: const TextStyle(
+                            color: kText,
+                            fontSize: 24.0,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
+
               FutureBuilder(
-                future: r.recuperaMangasPorTipo('mahwa'),
+                future: r.recuperaMangasPorGenero(genero),
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
                     List<lmam.Data> mangas = snapshot.data as List<lmam.Data>;
@@ -282,54 +516,55 @@ class _HomePageState extends State<HomePage> {
                     ),
                   );
                 },
-              ),
-              Text(
-                'Aventura',
-                style: TextStyle(
-                  color: Color(0XFFFFFFFF),
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              FutureBuilder(
-                future: r.recuperaMangasPorGenero(1),
-                builder: (context, snapshot) {
-                  if (snapshot.hasData) {
-                    List<lmam.Data> mangas = snapshot.data as List<lmam.Data>;
-                    if (mangas.isNotEmpty) {
-                      return SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Row(
-                          children: mangas
-                              .map(
-                                (e) => Manga(
-                                  title: '${e.title}',
-                                  url: '${e.images!.jpg!.imageUrl}',
-                                  resume: '${e.synopsis}',
-                                ),
-                              )
-                              .toList(),
-                        ),
-                      );
-                    } else if (mangas.isEmpty) {
-                      return Center(
-                        child: Text(
-                          'Não foi encontrado',
-                          style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.red),
-                        ),
-                      );
-                    }
-                  }
-                  return Center(
-                    child: const CircularProgressIndicator(
-                      color: kprimaryColor,
-                    ),
-                  );
-                },
-              ),
+              )
+
+              // Text(
+              //   'Aventura',
+              //   style: TextStyle(
+              //     color: Color(0XFFFFFFFF),
+              //     fontSize: 24,
+              //     fontWeight: FontWeight.bold,
+              //   ),
+              // ),
+              // FutureBuilder(
+              //   future: r.recuperaMangasPorGenero(1),
+              //   builder: (context, snapshot) {
+              //     if (snapshot.hasData) {
+              //       List<lmam.Data> mangas = snapshot.data as List<lmam.Data>;
+              //       if (mangas.isNotEmpty) {
+              //         return SingleChildScrollView(
+              //           scrollDirection: Axis.horizontal,
+              //           child: Row(
+              //             children: mangas
+              //                 .map(
+              //                   (e) => Manga(
+              //                     title: '${e.title}',
+              //                     url: '${e.images!.jpg!.imageUrl}',
+              //                     resume: '${e.synopsis}',
+              //                   ),
+              //                 )
+              //                 .toList(),
+              //           ),
+              //         );
+              //       } else if (mangas.isEmpty) {
+              //         return Center(
+              //           child: Text(
+              //             'Não foi encontrado',
+              //             style: TextStyle(
+              //                 fontSize: 20,
+              //                 fontWeight: FontWeight.bold,
+              //                 color: Colors.red),
+              //           ),
+              //         );
+              //       }
+              //     }
+              //     return Center(
+              //       child: const CircularProgressIndicator(
+              //         color: kprimaryColor,
+              //       ),
+              //     );
+              //   },
+              // ),
               // Text(
               //   'Hentai',
               //   style: TextStyle(

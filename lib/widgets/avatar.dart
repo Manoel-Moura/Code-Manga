@@ -32,9 +32,9 @@ class Avatar extends StatelessWidget {
     return GestureDetector(
       child: Padding(
         padding: const EdgeInsets.only(
-          top: 8.0,
-          right: 8.0,
-          left: 8.0,
+          top: 20.0,
+          right: 10.0,
+          left: 10.0,
           bottom: 20.0,
         ),
         child: Column(
@@ -58,7 +58,7 @@ class Avatar extends StatelessWidget {
             Container(
               margin: const EdgeInsets.only(top: 9.0),
               child: Text(
-                text,
+                text.substring(0, text.length <= 12 ? null : 12),
                 style: GoogleFonts.poppins(
                   textStyle: TextStyle(
                     color: Colors.white,

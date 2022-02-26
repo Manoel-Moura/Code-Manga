@@ -13,11 +13,11 @@ class RepositoryUnity {
     dynamic resposta;
 
     try {
-      await Future.delayed(const Duration(seconds: 2), () async {
+      await Future.delayed(const Duration(milliseconds: 400), () async {
         resposta = await dio.get(endpoint + "$id");
       });
     } catch (e) {
-      await Future.delayed(const Duration(seconds: 2), () async {
+      await Future.delayed(const Duration(milliseconds: 400), () async {
         resposta = await dio.get(endpoint + '${113138}');
       });
     }
@@ -29,17 +29,17 @@ class RepositoryUnity {
     return MangaApiModel();
   }
 
-// Future getManga(int id) async {
-//   try {
-//     MangaApiModel manga = await buscaUmMangaId(id);
-//     return manga;
-//     // ignore: non_constant_identifier_names
-//   } catch (Exc) {
-//     // ignore: avoid_print
-//     print(Exc);
-//     rethrow;
-//   }
-// }
+  Future getManga(int id) async {
+    try {
+      MangaApiModel manga = await buscaUmMangaId(id);
+      return manga;
+      // ignore: non_constant_identifier_names
+    } catch (Exc) {
+      // ignore: avoid_print
+      print(Exc);
+      rethrow;
+    }
+  }
 
 // Future getImageManga(int id) async {
 //   MangaApiModel manga = await buscaUmMangaId(id);

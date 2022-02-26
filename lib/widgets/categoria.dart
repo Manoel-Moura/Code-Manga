@@ -1,5 +1,7 @@
+import 'package:code_manga/API/repositoryList.dart';
 import 'package:flutter/material.dart';
 import 'package:code_manga/consts/colors/colors.dart';
+import 'package:provider/provider.dart';
 
 class Categoria extends StatelessWidget {
   final String text;
@@ -7,24 +9,18 @@ class Categoria extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        const Padding(
-          padding: EdgeInsets.only(bottom: 15),
-          child: CircleAvatar(
-            backgroundColor: kprimaryColor,
-            radius: 3.0,
-          ),
+    RepositoryList r = Provider.of(context);
+
+    return Padding(
+      padding: const EdgeInsets.all(10),
+      child: Text(
+        text,
+        style: const TextStyle(
+          color: kText,
+          fontSize: 24.0,
+          fontWeight: FontWeight.bold,
         ),
-        Padding(
-          padding: const EdgeInsets.only(bottom: 15, left: 3, right: 15),
-          child: Text(
-            text,
-            style: const TextStyle(
-                color: kText, fontSize: 11.0, fontWeight: FontWeight.bold),
-          ),
-        ),
-      ],
+      ),
     );
   }
 }
