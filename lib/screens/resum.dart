@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:code_manga/consts/colors/colors.dart';
 import 'package:code_manga/screens/navHomePage.dart';
 import 'package:code_manga/widgets/cabecalho.dart';
@@ -77,26 +75,28 @@ class Resume extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        Row(
-                          children: [
-                            Container(
-                              margin: const EdgeInsets.only(
-                                bottom: 16,
-                              ),
-                              child: Text(
-                                title,
-                                textAlign: TextAlign.justify,
-                                style: GoogleFonts.poppins(
-                                  textStyle: const TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                        Column(children: [
+                          Container(
+                            margin: const EdgeInsets.only(
+                              bottom: 16,
+                            ),
+                            child: Text(
+                              title.substring(
+                                  0, title.length <= 12 ? null : 12),
+                              maxLines: 1,
+                              softWrap: false,
+                              overflow: TextOverflow.fade,
+                              textAlign: TextAlign.justify,
+                              style: GoogleFonts.poppins(
+                                textStyle: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
                                 ),
                               ),
                             ),
-                          ],
-                        ),
+                          )
+                        ]),
                         Container(
                           margin: const EdgeInsets.only(
                             bottom: 11,

@@ -1,7 +1,4 @@
 // ignore_for_file: file_names
-
-import 'dart:ui';
-
 import 'package:code_manga/API/repositoryList.dart';
 import 'package:code_manga/API/listaMangaApiModel.dart' as lmam;
 import 'package:code_manga/API/repositoryUnity.dart';
@@ -13,7 +10,6 @@ import 'package:code_manga/widgets/cabecalho.dart';
 import 'package:code_manga/widgets/destaque.dart';
 import 'dart:math';
 import 'package:code_manga/widgets/manga.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
