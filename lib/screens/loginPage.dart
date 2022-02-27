@@ -14,6 +14,9 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  TextEditingController emailController = TextEditingController();
+  TextEditingController senhaController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -66,15 +69,17 @@ class _LoginPageState extends State<LoginPage> {
                     const EdgeInsets.symmetric(vertical: 29, horizontal: 29),
                 child: Column(
                   children: [
-                    const Padding(
-                      padding: EdgeInsets.only(bottom: 25),
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 25),
                       child: Input(
+                        myController: emailController,
                         icone: Icons.email_rounded,
                         texto: "Digite seu email",
                         password: false,
                       ),
                     ),
-                    const Input(
+                    Input(
+                      myController: senhaController,
                       icone: Icons.lock,
                       texto: "Digite sua senha",
                       password: true,
