@@ -58,16 +58,16 @@ class _HomePageState extends State<HomePage> {
       child: Scaffold(
         backgroundColor: const Color.fromRGBO(31, 31, 31, 0.9),
         appBar: AppBar(
-          leading: IconButton(
-            onPressed: () {
-              Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => const LoginPage()));
-            },
-            icon: const Icon(
-              Icons.arrow_back,
-              color: kText,
-            ),
-          ),
+          // leading: IconButton(
+          //   onPressed: () {
+          //     Navigator.of(context).push(
+          //         MaterialPageRoute(builder: (context) => const LoginPage()));
+          //   },
+          //   icon: const Icon(
+          //     Icons.arrow_back,
+          //     color: kText,
+          //   ),
+          // ),
           flexibleSpace: Container(
             decoration: const BoxDecoration(
               gradient: LinearGradient(
@@ -76,12 +76,51 @@ class _HomePageState extends State<HomePage> {
                   colors: <Color>[kAppBar, kAppBar2]),
             ),
           ),
-          title: const Cabecalho(),
-          actions: [],
+          title: Cabecalho(),
+          centerTitle: true,
         ),
         body: SingleChildScrollView(
           child: Column(
             children: [
+              Container(
+                padding: EdgeInsets.only(
+                  left: 30,
+                  right: 30,
+                ),
+                margin: EdgeInsets.all(
+                  10,
+                ),
+                child: TextField(
+                  decoration: InputDecoration(
+                    contentPadding: EdgeInsets.only(
+                      top: 20,
+                    ),
+                    filled: true,
+                    prefixIcon: Icon(
+                      Icons.search,
+                      color: Colors.black,
+                    ),
+                    fillColor: Colors.white,
+                    hintText: 'Pesquisar...',
+                    hintStyle: GoogleFonts.poppins(),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(23),
+                      borderSide: const BorderSide(
+                        color: Colors.white,
+                        width: 10,
+                      ),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(23),
+                      borderSide: const BorderSide(
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                  cursorColor: Colors.white,
+                ),
+              ),
+
               FutureBuilder(
                 future: ru.buscaUmMangaId(mangasDestaque![randomNumber]),
                 builder: (context, snapshot) {
