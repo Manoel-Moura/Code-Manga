@@ -70,18 +70,20 @@ class Resume extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Row(children: [
+                    Container(
+                      width: 173,
+                      height: 275,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
                           Container(
                             margin: const EdgeInsets.only(
                               bottom: 16,
                             ),
                             child: Text(
                               title,
-                              textAlign: TextAlign.justify,
+                              // textAlign: TextAlign.justify,
                               style: GoogleFonts.poppins(
                                 textStyle: const TextStyle(
                                   color: Colors.white,
@@ -91,106 +93,116 @@ class Resume extends StatelessWidget {
                               ),
                             ),
                           ),
-                        ]),
-                        Container(
-                          margin: const EdgeInsets.only(
-                            bottom: 11,
-                          ),
-                          child: Row(
+                          Column(
+                            //crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Text(
-                                "Capítulos: ",
-                                style: GoogleFonts.poppins(
-                                  textStyle: const TextStyle(
-                                    color: Colors.white54,
-                                    fontSize: 14,
-                                  ),
+                              Container(
+                                margin: const EdgeInsets.only(
+                                  bottom: 11,
+                                ),
+                                child: Row(
+                                  children: [
+                                    Text(
+                                      "Ranking: ",
+                                      style: GoogleFonts.poppins(
+                                        textStyle: const TextStyle(
+                                          color: Colors.white54,
+                                          fontSize: 14,
+                                        ),
+                                      ),
+                                    ),
+                                    Container(
+                                      margin: const EdgeInsets.only(
+                                        left: 23,
+                                      ),
+                                      child: Text(
+                                        ranking == 'null'
+                                            ? 'unavailable'
+                                            : ranking,
+                                        style: GoogleFonts.poppins(
+                                          textStyle: const TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 14,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
                               Container(
                                 margin: const EdgeInsets.only(
-                                  left: 10,
+                                  bottom: 11,
                                 ),
-                                child: Text(
-                                  nCapitulo == 'null'
-                                      ? 'unavailable'
-                                      : nCapitulo,
-                                  style: GoogleFonts.poppins(
-                                    textStyle: const TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 14,
+                                child: Row(
+                                  children: [
+                                    Text(
+                                      "Capítulos: ",
+                                      style: GoogleFonts.poppins(
+                                        textStyle: const TextStyle(
+                                          color: Colors.white54,
+                                          fontSize: 14,
+                                        ),
+                                      ),
                                     ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Container(
-                          margin: const EdgeInsets.only(
-                            bottom: 11,
-                          ),
-                          child: Row(
-                            children: [
-                              Text(
-                                "Volumes: ",
-                                style: GoogleFonts.poppins(
-                                  textStyle: const TextStyle(
-                                    color: Colors.white54,
-                                    fontSize: 14,
-                                  ),
+                                    Container(
+                                      margin: const EdgeInsets.only(
+                                        left: 10,
+                                      ),
+                                      child: Text(
+                                        nCapitulo == 'null'
+                                            ? 'unavailable'
+                                            : nCapitulo,
+                                        style: GoogleFonts.poppins(
+                                          textStyle: const TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 14,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
                               Container(
                                 margin: const EdgeInsets.only(
-                                  left: 17,
+                                  bottom: 11,
                                 ),
-                                child: Text(
-                                  nVolumes == 'null' ? 'unavailable' : nVolumes,
-                                  style: GoogleFonts.poppins(
-                                    textStyle: const TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 14,
+                                child: Row(
+                                  children: [
+                                    Text(
+                                      "Volumes: ",
+                                      style: GoogleFonts.poppins(
+                                        textStyle: const TextStyle(
+                                          color: Colors.white54,
+                                          fontSize: 14,
+                                        ),
+                                      ),
                                     ),
-                                  ),
+                                    Container(
+                                      margin: const EdgeInsets.only(
+                                        left: 17,
+                                      ),
+                                      child: Text(
+                                        nVolumes == 'null'
+                                            ? 'unavailable'
+                                            : nVolumes,
+                                        style: GoogleFonts.poppins(
+                                          textStyle: const TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 14,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
                             ],
-                          ),
-                        ),
-                        Container(
-                          margin: const EdgeInsets.only(
-                            bottom: 11,
-                          ),
-                          child: Row(
-                            children: [
-                              Text(
-                                "Ranking: ",
-                                style: GoogleFonts.poppins(
-                                  textStyle: const TextStyle(
-                                    color: Colors.white54,
-                                    fontSize: 14,
-                                  ),
-                                ),
-                              ),
-                              Container(
-                                margin: const EdgeInsets.only(
-                                  left: 23,
-                                ),
-                                child: Text(
-                                  ranking == 'null' ? 'unavailable' : ranking,
-                                  style: GoogleFonts.poppins(
-                                    textStyle: const TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 14,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
+                          )
+                        ],
+                      ),
                     ),
                   ],
                 ),
