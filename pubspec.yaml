@@ -45,6 +45,7 @@ dependencies:
   dio: ^4.0.0
   provider: any
   http2: ^2.0.0
+  url_launcher: ^6.0.20
 dev_dependencies:
   flutter_test:
     sdk: flutter
