@@ -11,6 +11,7 @@ import 'package:code_manga/widgets/destaque.dart';
 import 'dart:math';
 import 'package:code_manga/widgets/manga.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'package:provider/provider.dart';
 
@@ -76,19 +77,7 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           title: const Cabecalho(),
-          actions: [
-            Padding(
-                padding: const EdgeInsets.only(right: 35.0),
-                child: GestureDetector(
-                  onTap: () {},
-                  // ignore: prefer_const_constructors
-                  child: Icon(
-                    Icons.search,
-                    color: kText,
-                    size: 26.0,
-                  ),
-                )),
-          ],
+          actions: [],
         ),
         body: SingleChildScrollView(
           child: Column(
