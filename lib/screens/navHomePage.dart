@@ -1,12 +1,9 @@
-// ignore_for_file: file_names
-
 import 'package:code_manga/consts/colors/colors.dart';
-import 'package:code_manga/screens/cadastroPage.dart';
 import 'package:code_manga/screens/homePage.dart';
-import 'package:code_manga/screens/informacoes.dart';
-import 'package:code_manga/screens/loginPage.dart';
 import 'package:code_manga/screens/perfil.dart';
 import 'package:flutter/material.dart';
+
+import 'informacoes.dart';
 
 class NavHome extends StatefulWidget {
   const NavHome({Key? key}) : super(key: key);

@@ -1,7 +1,6 @@
 // import 'package:code_manga/screens/homePage.dart';
 import 'package:code_manga/screens/resum.dart';
 import 'package:flutter/material.dart';
-
 import 'package:google_fonts/google_fonts.dart';
 
 class Avatar extends StatelessWidget {
@@ -54,7 +53,7 @@ class Avatar extends StatelessWidget {
               child: Text(
                 text.substring(0, text.length <= 12 ? null : 12),
                 style: GoogleFonts.poppins(
-                  textStyle: TextStyle(
+                  textStyle: const TextStyle(
                     color: Colors.white,
                   ),
                 ),

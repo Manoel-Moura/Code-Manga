@@ -1,7 +1,5 @@
 import 'package:code_manga/consts/colors/colors.dart';
-
 import 'package:code_manga/screens/resum.dart';
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -41,7 +39,7 @@ class Destaque extends StatelessWidget {
               children: [
                 Center(
                   child: Padding(
-                    padding: EdgeInsets.only(bottom: 10),
+                    padding: const EdgeInsets.only(bottom: 10),
                     child: Text(
                       'Manga',
                       style: GoogleFonts.poppins(

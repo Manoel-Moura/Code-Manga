@@ -1,7 +1,5 @@
-import 'package:code_manga/API/repositoryList.dart';
 import 'package:flutter/material.dart';
 import 'package:code_manga/consts/colors/colors.dart';
-import 'package:provider/provider.dart';
 
 class Categoria extends StatelessWidget {
   final String text;
@@ -9,8 +7,6 @@ class Categoria extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    RepositoryList r = Provider.of(context);
-
     return Padding(
       padding: const EdgeInsets.all(10),
       child: Text(

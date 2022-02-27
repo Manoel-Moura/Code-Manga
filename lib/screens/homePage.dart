@@ -4,7 +4,6 @@ import 'package:code_manga/API/listaMangaApiModel.dart' as lmam;
 import 'package:code_manga/API/repositoryUnity.dart';
 import 'package:code_manga/API/mangaApiModel.dart';
 import 'package:code_manga/consts/colors/colors.dart';
-import 'package:code_manga/screens/loginPage.dart';
 import 'package:code_manga/widgets/avatar.dart';
 import 'package:code_manga/widgets/cabecalho.dart';
 import 'package:code_manga/widgets/destaque.dart';
@@ -76,27 +75,27 @@ class _HomePageState extends State<HomePage> {
                   colors: <Color>[kAppBar, kAppBar2]),
             ),
           ),
-          title: Cabecalho(),
+          title: const Cabecalho(),
           centerTitle: true,
         ),
         body: SingleChildScrollView(
           child: Column(
             children: [
               Container(
-                padding: EdgeInsets.only(
+                padding: const EdgeInsets.only(
                   left: 30,
                   right: 30,
                 ),
-                margin: EdgeInsets.all(
+                margin: const EdgeInsets.all(
                   10,
                 ),
                 child: TextField(
                   decoration: InputDecoration(
-                    contentPadding: EdgeInsets.only(
+                    contentPadding: const EdgeInsets.only(
                       top: 20,
                     ),
                     filled: true,
-                    prefixIcon: Icon(
+                    prefixIcon: const Icon(
                       Icons.search,
                       color: Colors.black,
                     ),
@@ -195,12 +194,12 @@ class _HomePageState extends State<HomePage> {
                       onTap: () {
                         novCategoria(1);
                       },
-                      child: Padding(
-                        padding: const EdgeInsets.only(
-                            left: 15, right: 15, bottom: 15),
+                      child: const Padding(
+                        padding:
+                            EdgeInsets.only(left: 15, right: 15, bottom: 15),
                         child: Text(
                           'Action',
-                          style: const TextStyle(
+                          style: TextStyle(
                             color: kText,
                             fontSize: 24.0,
                             fontWeight: FontWeight.bold,
@@ -212,12 +211,12 @@ class _HomePageState extends State<HomePage> {
                       onTap: () {
                         novCategoria(2);
                       },
-                      child: Padding(
-                        padding: const EdgeInsets.only(
-                            left: 15, right: 15, bottom: 15),
+                      child: const Padding(
+                        padding:
+                            EdgeInsets.only(left: 15, right: 15, bottom: 15),
                         child: Text(
                           'Adventure',
-                          style: const TextStyle(
+                          style: TextStyle(
                             color: kText,
                             fontSize: 24.0,
                             fontWeight: FontWeight.bold,
@@ -229,12 +228,12 @@ class _HomePageState extends State<HomePage> {
                       onTap: () {
                         novCategoria(8);
                       },
-                      child: Padding(
-                        padding: const EdgeInsets.only(
-                            left: 15, right: 15, bottom: 15),
+                      child: const Padding(
+                        padding:
+                            EdgeInsets.only(left: 15, right: 15, bottom: 15),
                         child: Text(
                           'Drama',
-                          style: const TextStyle(
+                          style: TextStyle(
                             color: kText,
                             fontSize: 24.0,
                             fontWeight: FontWeight.bold,
@@ -246,12 +245,12 @@ class _HomePageState extends State<HomePage> {
                       onTap: () {
                         novCategoria(10);
                       },
-                      child: Padding(
-                        padding: const EdgeInsets.only(
-                            left: 15, right: 15, bottom: 15),
+                      child: const Padding(
+                        padding:
+                            EdgeInsets.only(left: 15, right: 15, bottom: 15),
                         child: Text(
                           'Fantasy',
-                          style: const TextStyle(
+                          style: TextStyle(
                             color: kText,
                             fontSize: 24.0,
                             fontWeight: FontWeight.bold,
@@ -263,12 +262,12 @@ class _HomePageState extends State<HomePage> {
                       onTap: () {
                         novCategoria(14);
                       },
-                      child: Padding(
-                        padding: const EdgeInsets.only(
-                            left: 15, right: 15, bottom: 15),
+                      child: const Padding(
+                        padding:
+                            EdgeInsets.only(left: 15, right: 15, bottom: 15),
                         child: Text(
                           'Horror',
-                          style: const TextStyle(
+                          style: TextStyle(
                             color: kText,
                             fontSize: 24.0,
                             fontWeight: FontWeight.bold,
@@ -280,12 +279,12 @@ class _HomePageState extends State<HomePage> {
                       onTap: () {
                         novCategoria(37);
                       },
-                      child: Padding(
-                        padding: const EdgeInsets.only(
-                            left: 15, right: 15, bottom: 15),
+                      child: const Padding(
+                        padding:
+                            EdgeInsets.only(left: 15, right: 15, bottom: 15),
                         child: Text(
                           'Supernatural',
-                          style: const TextStyle(
+                          style: TextStyle(
                             color: kText,
                             fontSize: 24.0,
                             fontWeight: FontWeight.bold,
@@ -297,12 +296,12 @@ class _HomePageState extends State<HomePage> {
                       onTap: () {
                         novCategoria(4);
                       },
-                      child: Padding(
-                        padding: const EdgeInsets.only(
-                            left: 15, right: 15, bottom: 15),
+                      child: const Padding(
+                        padding:
+                            EdgeInsets.only(left: 15, right: 15, bottom: 15),
                         child: Text(
                           'Comedy',
-                          style: const TextStyle(
+                          style: TextStyle(
                             color: kText,
                             fontSize: 24.0,
                             fontWeight: FontWeight.bold,
@@ -314,12 +313,12 @@ class _HomePageState extends State<HomePage> {
                       onTap: () {
                         novCategoria(9);
                       },
-                      child: Padding(
-                        padding: const EdgeInsets.only(
-                            left: 15, right: 15, bottom: 15),
+                      child: const Padding(
+                        padding:
+                            EdgeInsets.only(left: 15, right: 15, bottom: 15),
                         child: Text(
                           'Harem',
-                          style: const TextStyle(
+                          style: TextStyle(
                             color: kText,
                             fontSize: 24.0,
                             fontWeight: FontWeight.bold,
@@ -331,12 +330,12 @@ class _HomePageState extends State<HomePage> {
                       onTap: () {
                         novCategoria(35);
                       },
-                      child: Padding(
-                        padding: const EdgeInsets.only(
-                            left: 15, right: 15, bottom: 15),
+                      child: const Padding(
+                        padding:
+                            EdgeInsets.only(left: 15, right: 15, bottom: 15),
                         child: Text(
                           'Ecchi',
-                          style: const TextStyle(
+                          style: TextStyle(
                             color: kText,
                             fontSize: 24.0,
                             fontWeight: FontWeight.bold,
@@ -348,12 +347,12 @@ class _HomePageState extends State<HomePage> {
                       onTap: () {
                         novCategoria(49);
                       },
-                      child: Padding(
-                        padding: const EdgeInsets.only(
-                            left: 15, right: 15, bottom: 15),
+                      child: const Padding(
+                        padding:
+                            EdgeInsets.only(left: 15, right: 15, bottom: 15),
                         child: Text(
                           'Erotico',
-                          style: const TextStyle(
+                          style: TextStyle(
                             color: kText,
                             fontSize: 24.0,
                             fontWeight: FontWeight.bold,
@@ -365,12 +364,12 @@ class _HomePageState extends State<HomePage> {
                       onTap: () {
                         novCategoria(12);
                       },
-                      child: Padding(
-                        padding: const EdgeInsets.only(
-                            left: 15, right: 15, bottom: 15),
+                      child: const Padding(
+                        padding:
+                            EdgeInsets.only(left: 15, right: 15, bottom: 15),
                         child: Text(
                           '+18',
-                          style: const TextStyle(
+                          style: TextStyle(
                             color: kText,
                             fontSize: 24.0,
                             fontWeight: FontWeight.bold,
@@ -406,7 +405,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                       );
                     } else if (mangas.isEmpty) {
-                      return Center(
+                      return const Center(
                         child: Text(
                           'Não foi encontrado',
                           style: TextStyle(
@@ -417,8 +416,8 @@ class _HomePageState extends State<HomePage> {
                       );
                     }
                   }
-                  return Center(
-                    child: const CircularProgressIndicator(
+                  return const Center(
+                    child: CircularProgressIndicator(
                       color: kprimaryColor,
                     ),
                   );

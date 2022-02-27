@@ -1,7 +1,6 @@
 import 'package:code_manga/consts/colors/colors.dart';
 import 'package:code_manga/screens/navHomePage.dart';
 import 'package:code_manga/widgets/cabecalho.dart';
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -75,17 +74,13 @@ class Resume extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        Column(children: [
+                        Row(children: [
                           Container(
                             margin: const EdgeInsets.only(
                               bottom: 16,
                             ),
                             child: Text(
-                              title.substring(
-                                  0, title.length <= 12 ? null : 12),
-                              maxLines: 1,
-                              softWrap: false,
-                              overflow: TextOverflow.fade,
+                              title,
                               textAlign: TextAlign.justify,
                               style: GoogleFonts.poppins(
                                 textStyle: const TextStyle(
@@ -95,7 +90,7 @@ class Resume extends StatelessWidget {
                                 ),
                               ),
                             ),
-                          )
+                          ),
                         ]),
                         Container(
                           margin: const EdgeInsets.only(
@@ -117,9 +112,9 @@ class Resume extends StatelessWidget {
                                   left: 10,
                                 ),
                                 child: Text(
-                                  "${nCapitulo}" == 'null'
+                                  nCapitulo == 'null'
                                       ? 'unavailable'
-                                      : "${nCapitulo}",
+                                      : nCapitulo,
                                   style: GoogleFonts.poppins(
                                     textStyle: const TextStyle(
                                       color: Colors.white,
@@ -151,9 +146,7 @@ class Resume extends StatelessWidget {
                                   left: 17,
                                 ),
                                 child: Text(
-                                  "${nVolumes}" == 'null'
-                                      ? 'unavailable'
-                                      : "${nVolumes}",
+                                  nVolumes == 'null' ? 'unavailable' : nVolumes,
                                   style: GoogleFonts.poppins(
                                     textStyle: const TextStyle(
                                       color: Colors.white,
@@ -185,11 +178,9 @@ class Resume extends StatelessWidget {
                                   left: 23,
                                 ),
                                 child: Text(
-                                  "${ranking}" == 'null'
-                                      ? 'unavailable'
-                                      : "${ranking}",
+                                  ranking == 'null' ? 'unavailable' : ranking,
                                   style: GoogleFonts.poppins(
-                                    textStyle: TextStyle(
+                                    textStyle: const TextStyle(
                                       color: Colors.white,
                                       fontSize: 14,
                                     ),
@@ -210,7 +201,7 @@ class Resume extends StatelessWidget {
                   Text(
                     'Resume',
                     style: GoogleFonts.poppins(
-                      textStyle: TextStyle(
+                      textStyle: const TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
                         fontSize: 19,
@@ -223,7 +214,7 @@ class Resume extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Container(
-                    margin: EdgeInsets.all(
+                    margin: const EdgeInsets.all(
                       18,
                     ),
                     child: Text(

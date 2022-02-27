@@ -1,6 +1,6 @@
 import 'package:code_manga/consts/colors/colors.dart';
 import 'package:code_manga/widgets/cabecalho.dart';
-import 'package:flutter/gestures.dart';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -13,7 +13,7 @@ class PerfilPage extends StatelessWidget {
       backgroundColor: kBackgroundColor,
       appBar: AppBar(
         backgroundColor: kBackgroundColor,
-        title: Cabecalho(),
+        title: const Cabecalho(),
       ),
       body: Column(
         // mainAxisAlignment: MainAxisAlignment.center,
@@ -71,7 +71,8 @@ class PerfilPage extends StatelessWidget {
             color: Colors.white70,
             child: ListTile(
               leading: const Icon(
-                Icons.whatsapp_outlined,
+                Icons.phone_android_outlined,
+                //Icons.adb_outlined,
                 color: Colors.black54,
                 size: 30,
               ),
@@ -93,7 +94,7 @@ class PerfilPage extends StatelessWidget {
             ),
           ),
           Card(
-            margin: EdgeInsets.all(20),
+            margin: const EdgeInsets.all(20),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10),
             ),
