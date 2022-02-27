@@ -98,7 +98,7 @@ class _InformacoesPageState extends State<InformacoesPage> {
                   'tchalissongomes@aluno.uespi.br',
                   textAlign: TextAlign.center,
                   style: GoogleFonts.poppins(
-                    textStyle: TextStyle(
+                    textStyle: const TextStyle(
                       color: kprimaryColor,
                       fontWeight: FontWeight.w500,
                       fontSize: 12,
@@ -150,7 +150,7 @@ class _InformacoesPageState extends State<InformacoesPage> {
                   'carlosalexandre@aluno.uespi.br',
                   textAlign: TextAlign.center,
                   style: GoogleFonts.poppins(
-                    textStyle: TextStyle(
+                    textStyle: const TextStyle(
                       color: kprimaryColor,
                       fontWeight: FontWeight.w500,
                       fontSize: 12,
@@ -201,7 +201,7 @@ class _InformacoesPageState extends State<InformacoesPage> {
                   'manoelmoura@aluno.uespi.br',
                   textAlign: TextAlign.center,
                   style: GoogleFonts.poppins(
-                    textStyle: TextStyle(
+                    textStyle: const TextStyle(
                       color: kprimaryColor,
                       fontWeight: FontWeight.w500,
                       fontSize: 12,
@@ -223,7 +223,7 @@ class _InformacoesPageState extends State<InformacoesPage> {
                   _launchInBrowser(
                       'https://docs.api.jikan.moe/#section/Information')
                 },
-                leading: Icon(
+                leading: const Icon(
                   Icons.api_outlined,
                   color: kprimaryColor,
                   size: 40,
@@ -238,7 +238,7 @@ class _InformacoesPageState extends State<InformacoesPage> {
                         fontWeight: FontWeight.w600),
                   ),
                 ),
-                trailing: Icon(
+                trailing: const Icon(
                   Icons.api_outlined,
                   color: kprimaryColor,
                   size: 40,

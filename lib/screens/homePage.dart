@@ -56,69 +56,83 @@ class _HomePageState extends State<HomePage> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: const Color.fromRGBO(31, 31, 31, 0.9),
-        appBar: AppBar(
-          // leading: IconButton(
-          //   onPressed: () {
-          //     Navigator.of(context).push(
-          //         MaterialPageRoute(builder: (context) => const LoginPage()));
-          //   },
-          //   icon: const Icon(
-          //     Icons.arrow_back,
-          //     color: kText,
-          //   ),
-          // ),
-          flexibleSpace: Container(
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: <Color>[kAppBar, kAppBar2]),
-            ),
-          ),
-          title: const Cabecalho(),
-          centerTitle: true,
-        ),
+        // appBar: AppBar(
+        //   // leading: IconButton(
+        //   //   onPressed: () {
+        //   //     Navigator.of(context).push(
+        //   //         MaterialPageRoute(builder: (context) => const LoginPage()));
+        //   //   },
+        //   //   icon: const Icon(
+        //   //     Icons.arrow_back,
+        //   //     color: kText,
+        //   //   ),
+        //   // ),
+        //   flexibleSpace: Container(
+        //     decoration: const BoxDecoration(
+        //       gradient: LinearGradient(
+        //           begin: Alignment.topCenter,
+        //           end: Alignment.bottomCenter,
+        //           colors: <Color>[kAppBar, kAppBar2]),
+        //     ),
+        //   ),
+        //   title: const Cabecalho(),
+        //   centerTitle: true,
+        // ),
         body: SingleChildScrollView(
           child: Column(
             children: [
               Container(
-                padding: const EdgeInsets.only(
-                  left: 30,
-                  right: 30,
-                ),
-                margin: const EdgeInsets.all(
-                  10,
-                ),
-                child: TextField(
-                  decoration: InputDecoration(
-                    contentPadding: const EdgeInsets.only(
-                      top: 20,
-                    ),
-                    filled: true,
-                    prefixIcon: const Icon(
-                      Icons.search,
-                      color: Colors.black,
-                    ),
-                    fillColor: Colors.white,
-                    hintText: 'Pesquisar...',
-                    hintStyle: GoogleFonts.poppins(),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(23),
-                      borderSide: const BorderSide(
-                        color: Colors.white,
-                        width: 10,
-                      ),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(23),
-                      borderSide: const BorderSide(
-                        color: Colors.white,
-                      ),
-                    ),
+                  decoration: const BoxDecoration(
+                    gradient: LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: <Color>[kAppBar, kAppBar2]),
                   ),
-                  cursorColor: Colors.white,
-                ),
-              ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+
+                    // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      const Cabecalho(),
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width / 1.7,
+                        child: Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.all(15),
+                            child: TextField(
+                              decoration: InputDecoration(
+                                contentPadding: const EdgeInsets.only(
+                                  top: 20,
+                                ),
+                                filled: true,
+                                prefixIcon: const Icon(
+                                  Icons.search,
+                                  color: Colors.black,
+                                ),
+                                fillColor: Colors.white,
+                                hintText: 'Pesquisar...',
+                                hintStyle: GoogleFonts.poppins(),
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(23),
+                                  borderSide: const BorderSide(
+                                    color: Colors.white,
+                                    width: 10,
+                                  ),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(23),
+                                  borderSide: const BorderSide(
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                              cursorColor: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  )),
 
               FutureBuilder(
                 future: ru.buscaUmMangaId(mangasDestaque![randomNumber]),
