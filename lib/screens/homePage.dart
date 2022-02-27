@@ -41,11 +41,17 @@ Random random = Random();
 int randomNumber = random.nextInt(12);
 int genero = 5;
 
+TextEditingController buscaController = TextEditingController();
+
 class _HomePageState extends State<HomePage> {
   void novCategoria(int valor) async {
     setState(() {
       genero = valor;
     });
+  }
+
+  void imprimeValor() {
+    print(buscaController.text);
   }
 
   @override
@@ -56,28 +62,6 @@ class _HomePageState extends State<HomePage> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: const Color.fromRGBO(31, 31, 31, 0.9),
-        // appBar: AppBar(
-        //   // leading: IconButton(
-        //   //   onPressed: () {
-        //   //     Navigator.of(context).push(
-        //   //         MaterialPageRoute(builder: (context) => const LoginPage()));
-        //   //   },
-        //   //   icon: const Icon(
-        //   //     Icons.arrow_back,
-        //   //     color: kText,
-        //   //   ),
-        //   // ),
-        //   flexibleSpace: Container(
-        //     decoration: const BoxDecoration(
-        //       gradient: LinearGradient(
-        //           begin: Alignment.topCenter,
-        //           end: Alignment.bottomCenter,
-        //           colors: <Color>[kAppBar, kAppBar2]),
-        //     ),
-        //   ),
-        //   title: const Cabecalho(),
-        //   centerTitle: true,
-        // ),
         body: SingleChildScrollView(
           child: Column(
             children: [
@@ -100,6 +84,10 @@ class _HomePageState extends State<HomePage> {
                           child: Padding(
                             padding: const EdgeInsets.all(15),
                             child: TextField(
+                              onSubmitted: (value) {
+                                imprimeValor();
+                              },
+                              controller: buscaController,
                               decoration: InputDecoration(
                                 contentPadding: const EdgeInsets.only(
                                   top: 20,
