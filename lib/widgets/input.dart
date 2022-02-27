@@ -5,19 +5,21 @@ class Input extends StatelessWidget {
   final IconData icone;
   final String texto;
   final bool password;
+  final TextEditingController myController;
 
   const Input(
       {Key? key,
       required this.icone,
       required this.texto,
-      required this.password})
+      required this.password,
+      required this.myController})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextField(
       // cursorColor: Colors.black,
-
+      controller: myController,
       obscureText: password,
       decoration: InputDecoration(
         contentPadding: const EdgeInsets.all(20), //Largura do TextFild

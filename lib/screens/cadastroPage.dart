@@ -13,6 +13,12 @@ class Cadastro extends StatefulWidget {
 }
 
 class _CadastroState extends State<Cadastro> {
+  TextEditingController nomeController = TextEditingController();
+  TextEditingController idadeController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController senha1 = TextEditingController();
+  TextEditingController senha2 = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -64,42 +70,47 @@ class _CadastroState extends State<Cadastro> {
                 margin:
                     const EdgeInsets.symmetric(vertical: 29, horizontal: 29),
                 child: Column(
-                  children: const [
+                  children: [
                     Padding(
-                      padding: EdgeInsets.only(bottom: 15),
+                      padding: const EdgeInsets.only(bottom: 15),
                       child: Input(
+                        myController: nomeController,
                         icone: Icons.person,
                         texto: "Digite seu nome",
                         password: false,
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.only(bottom: 15),
+                      padding: const EdgeInsets.only(bottom: 15),
                       child: Input(
+                        myController: idadeController,
                         icone: Icons.person,
                         texto: "Digite sua idade",
                         password: false,
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.only(bottom: 15),
+                      padding: const EdgeInsets.only(bottom: 15),
                       child: Input(
+                        myController: emailController,
                         icone: Icons.email_rounded,
                         texto: "Digite seu email",
                         password: false,
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.only(bottom: 15),
+                      padding: const EdgeInsets.only(bottom: 15),
                       child: Input(
+                        myController: senha1,
                         icone: Icons.lock,
                         texto: "Digite sua senha",
                         password: true,
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.only(bottom: 25),
+                      padding: const EdgeInsets.only(bottom: 25),
                       child: Input(
+                        myController: senha2,
                         icone: Icons.lock,
                         texto: "Confirme sua senha",
                         password: true,
