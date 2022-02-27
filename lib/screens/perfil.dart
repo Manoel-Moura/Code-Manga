@@ -71,7 +71,7 @@ class PerfilPage extends StatelessWidget {
             color: Colors.white70,
             child: ListTile(
               leading: const Icon(
-                Icons.phone_android_outlined,
+                Icons.whatsapp_outlined,
                 //Icons.adb_outlined,
                 color: Colors.black54,
                 size: 30,
