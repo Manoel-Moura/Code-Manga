@@ -4,6 +4,7 @@ import 'package:code_manga/API/listaMangaApiModel.dart' as lmam;
 import 'package:code_manga/API/repositoryUnity.dart';
 import 'package:code_manga/API/mangaApiModel.dart';
 import 'package:code_manga/consts/colors/colors.dart';
+import 'package:code_manga/screens/resultados.dart';
 import 'package:code_manga/widgets/avatar.dart';
 import 'package:code_manga/widgets/cabecalho.dart';
 import 'package:code_manga/widgets/destaque.dart';
@@ -50,10 +51,6 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
-  void imprimeValor() {
-    print(buscaController.text);
-  }
-
   @override
   Widget build(BuildContext context) {
     RepositoryList r = Provider.of(context);
@@ -85,7 +82,12 @@ class _HomePageState extends State<HomePage> {
                             padding: const EdgeInsets.all(15),
                             child: TextField(
                               onSubmitted: (value) {
-                                imprimeValor();
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        ResultadosPage(busca: buscaController),
+                                  ),
+                                );
                               },
                               controller: buscaController,
                               decoration: InputDecoration(
