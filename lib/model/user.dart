@@ -1,6 +1,6 @@
 class User {
   late String name;
-  late int age;
+  late String age;
   late String email;
   late String password;
 
@@ -16,7 +16,7 @@ class User {
     return password;
   }
 
-  int getAge() {
+  String getAge() {
     return age;
   }
 
@@ -28,7 +28,7 @@ class User {
     this.password = password;
   }
 
-  void setAge(int age) {
+  void setAge(String age) {
     this.age = age;
   }
 
@@ -43,7 +43,7 @@ class User {
     return false;
   }
 
-  User(String name, String password, String email, int age) {
+  User(String name, String password, String email, String age) {
     setName(name);
     setEmail(email);
     setPassword(password);
