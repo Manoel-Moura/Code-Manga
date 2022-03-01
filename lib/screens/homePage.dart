@@ -45,6 +45,7 @@ int genero = 5;
 TextEditingController buscaController = TextEditingController();
 
 class _HomePageState extends State<HomePage> {
+  // troca de generos
   bool isAction = false;
   bool isAdventure = false;
   bool isDrama = false;
