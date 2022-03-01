@@ -45,6 +45,237 @@ int genero = 5;
 TextEditingController buscaController = TextEditingController();
 
 class _HomePageState extends State<HomePage> {
+  bool isAction = false;
+  bool isAdventure = false;
+  bool isDrama = false;
+  bool isFantasy = false;
+  bool isHorror = false;
+  bool isSupernatural = false;
+  bool isComedy = false;
+  bool isHarem = false;
+  bool isEcchi = false;
+  bool isErotico = false;
+  bool is18 = false;
+
+  toggleAction() {
+    setState(() {
+      if (isAction) {
+        isAction = false;
+      } else {
+        isAction = true;
+        isAdventure = false;
+        isDrama = false;
+        isFantasy = false;
+        isSupernatural = false;
+        isComedy = false;
+        isHarem = false;
+        isEcchi = false;
+        isErotico = false;
+        is18 = false;
+      }
+    });
+  }
+
+  toggleAdventure() {
+    setState(() {
+      if (isAdventure) {
+        isAdventure = false;
+      } else {
+        isAdventure = true;
+        isAction = false;
+        isHorror = false;
+        isDrama = false;
+        isFantasy = false;
+        isSupernatural = false;
+        isComedy = false;
+        isHarem = false;
+        isEcchi = false;
+        isErotico = false;
+        is18 = false;
+      }
+    });
+  }
+
+  toggleDrama() {
+    setState(() {
+      if (isDrama) {
+        isDrama = false;
+      } else {
+        isDrama = true;
+        isHorror = false;
+        isAdventure = false;
+        isAction = false;
+        isFantasy = false;
+        isSupernatural = false;
+        isComedy = false;
+        isHarem = false;
+        isEcchi = false;
+        isErotico = false;
+        is18 = false;
+      }
+    });
+  }
+
+  toggleFantasy() {
+    setState(() {
+      if (isFantasy) {
+        isFantasy = false;
+      } else {
+        isFantasy = true;
+        isHorror = false;
+        isDrama = false;
+        isAdventure = false;
+        isAction = false;
+        isSupernatural = false;
+        isComedy = false;
+        isHarem = false;
+        isEcchi = false;
+        isErotico = false;
+        is18 = false;
+      }
+    });
+  }
+
+  toggleHorror() {
+    setState(() {
+      if (isHorror) {
+        isHorror = false;
+      } else {
+        isHorror = true;
+        isFantasy = false;
+        isDrama = false;
+        isAdventure = false;
+        isAction = false;
+        isSupernatural = false;
+        isComedy = false;
+        isHarem = false;
+        isEcchi = false;
+        isErotico = false;
+        is18 = false;
+      }
+    });
+  }
+
+  toggleSupernatural() {
+    setState(() {
+      if (isSupernatural) {
+        isSupernatural = false;
+      } else {
+        isSupernatural = true;
+        isHorror = false;
+        isFantasy = false;
+        isDrama = false;
+        isAdventure = false;
+        isAction = false;
+        isComedy = false;
+        isHarem = false;
+        isEcchi = false;
+        isErotico = false;
+        is18 = false;
+      }
+    });
+  }
+
+  toggleComedy() {
+    setState(() {
+      if (isComedy) {
+        isComedy = false;
+      } else {
+        isComedy = true;
+        isSupernatural = false;
+        isHorror = false;
+        isFantasy = false;
+        isDrama = false;
+        isAdventure = false;
+        isAction = false;
+        isHarem = false;
+        isEcchi = false;
+        isErotico = false;
+        is18 = false;
+      }
+    });
+  }
+
+  toggleHarem() {
+    setState(() {
+      if (isHarem) {
+        isHarem = false;
+      } else {
+        isHarem = true;
+        isComedy = false;
+        isSupernatural = false;
+        isHorror = false;
+        isFantasy = false;
+        isDrama = false;
+        isAdventure = false;
+        isAction = false;
+        isEcchi = false;
+        isErotico = false;
+        is18 = false;
+      }
+    });
+  }
+
+  toggleEcchi() {
+    setState(() {
+      if (isEcchi) {
+        isEcchi = false;
+      } else {
+        isEcchi = true;
+        isComedy = false;
+        isSupernatural = false;
+        isHorror = false;
+        isFantasy = false;
+        isDrama = false;
+        isAdventure = false;
+        isAction = false;
+        isHarem = false;
+        isErotico = false;
+        is18 = false;
+      }
+    });
+  }
+
+  toggleErotico() {
+    setState(() {
+      if (isErotico) {
+        isErotico = false;
+      } else {
+        isErotico = true;
+        isEcchi = false;
+        isComedy = false;
+        isSupernatural = false;
+        isHorror = false;
+        isFantasy = false;
+        isDrama = false;
+        isAdventure = false;
+        isAction = false;
+        isHarem = false;
+        is18 = false;
+      }
+    });
+  }
+
+  toggle18() {
+    setState(() {
+      if (is18) {
+        is18 = false;
+      } else {
+        is18 = true;
+        isErotico = false;
+        isEcchi = false;
+        isComedy = false;
+        isSupernatural = false;
+        isHorror = false;
+        isFantasy = false;
+        isDrama = false;
+        isAdventure = false;
+        isAction = false;
+        isHarem = false;
+      }
+    });
+  }
+
   void novCategoria(int valor) async {
     setState(() {
       genero = valor;
@@ -197,14 +428,15 @@ class _HomePageState extends State<HomePage> {
                     GestureDetector(
                       onTap: () {
                         novCategoria(1);
+                        toggleAction();
                       },
-                      child: const Padding(
-                        padding:
-                            EdgeInsets.only(left: 15, right: 15, bottom: 15),
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                            left: 15, right: 15, bottom: 15),
                         child: Text(
                           'Action',
                           style: TextStyle(
-                            color: kText,
+                            color: isAction ? kprimaryColor : kText,
                             fontSize: 24.0,
                             fontWeight: FontWeight.bold,
                           ),
@@ -214,14 +446,15 @@ class _HomePageState extends State<HomePage> {
                     GestureDetector(
                       onTap: () {
                         novCategoria(2);
+                        toggleAdventure();
                       },
-                      child: const Padding(
-                        padding:
-                            EdgeInsets.only(left: 15, right: 15, bottom: 15),
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                            left: 15, right: 15, bottom: 15),
                         child: Text(
                           'Adventure',
                           style: TextStyle(
-                            color: kText,
+                            color: isAdventure ? kprimaryColor : kText,
                             fontSize: 24.0,
                             fontWeight: FontWeight.bold,
                           ),
@@ -231,14 +464,15 @@ class _HomePageState extends State<HomePage> {
                     GestureDetector(
                       onTap: () {
                         novCategoria(8);
+                        toggleDrama();
                       },
-                      child: const Padding(
-                        padding:
-                            EdgeInsets.only(left: 15, right: 15, bottom: 15),
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                            left: 15, right: 15, bottom: 15),
                         child: Text(
                           'Drama',
                           style: TextStyle(
-                            color: kText,
+                            color: isDrama ? kprimaryColor : kText,
                             fontSize: 24.0,
                             fontWeight: FontWeight.bold,
                           ),
@@ -248,14 +482,15 @@ class _HomePageState extends State<HomePage> {
                     GestureDetector(
                       onTap: () {
                         novCategoria(10);
+                        toggleFantasy();
                       },
-                      child: const Padding(
-                        padding:
-                            EdgeInsets.only(left: 15, right: 15, bottom: 15),
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                            left: 15, right: 15, bottom: 15),
                         child: Text(
                           'Fantasy',
                           style: TextStyle(
-                            color: kText,
+                            color: isFantasy ? kprimaryColor : kText,
                             fontSize: 24.0,
                             fontWeight: FontWeight.bold,
                           ),
@@ -265,14 +500,15 @@ class _HomePageState extends State<HomePage> {
                     GestureDetector(
                       onTap: () {
                         novCategoria(14);
+                        toggleHorror();
                       },
-                      child: const Padding(
-                        padding:
-                            EdgeInsets.only(left: 15, right: 15, bottom: 15),
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                            left: 15, right: 15, bottom: 15),
                         child: Text(
                           'Horror',
                           style: TextStyle(
-                            color: kText,
+                            color: isHorror ? kprimaryColor : kText,
                             fontSize: 24.0,
                             fontWeight: FontWeight.bold,
                           ),
@@ -282,14 +518,15 @@ class _HomePageState extends State<HomePage> {
                     GestureDetector(
                       onTap: () {
                         novCategoria(37);
+                        toggleSupernatural();
                       },
-                      child: const Padding(
-                        padding:
-                            EdgeInsets.only(left: 15, right: 15, bottom: 15),
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                            left: 15, right: 15, bottom: 15),
                         child: Text(
                           'Supernatural',
                           style: TextStyle(
-                            color: kText,
+                            color: isSupernatural ? kprimaryColor : kText,
                             fontSize: 24.0,
                             fontWeight: FontWeight.bold,
                           ),
@@ -299,14 +536,15 @@ class _HomePageState extends State<HomePage> {
                     GestureDetector(
                       onTap: () {
                         novCategoria(4);
+                        toggleComedy();
                       },
-                      child: const Padding(
-                        padding:
-                            EdgeInsets.only(left: 15, right: 15, bottom: 15),
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                            left: 15, right: 15, bottom: 15),
                         child: Text(
                           'Comedy',
                           style: TextStyle(
-                            color: kText,
+                            color: isComedy ? kprimaryColor : kText,
                             fontSize: 24.0,
                             fontWeight: FontWeight.bold,
                           ),
@@ -316,14 +554,15 @@ class _HomePageState extends State<HomePage> {
                     GestureDetector(
                       onTap: () {
                         novCategoria(9);
+                        toggleHarem();
                       },
-                      child: const Padding(
-                        padding:
-                            EdgeInsets.only(left: 15, right: 15, bottom: 15),
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                            left: 15, right: 15, bottom: 15),
                         child: Text(
                           'Harem',
                           style: TextStyle(
-                            color: kText,
+                            color: isHarem ? kprimaryColor : kText,
                             fontSize: 24.0,
                             fontWeight: FontWeight.bold,
                           ),
@@ -333,14 +572,15 @@ class _HomePageState extends State<HomePage> {
                     GestureDetector(
                       onTap: () {
                         novCategoria(35);
+                        toggleEcchi();
                       },
-                      child: const Padding(
-                        padding:
-                            EdgeInsets.only(left: 15, right: 15, bottom: 15),
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                            left: 15, right: 15, bottom: 15),
                         child: Text(
                           'Ecchi',
                           style: TextStyle(
-                            color: kText,
+                            color: isEcchi ? kprimaryColor : kText,
                             fontSize: 24.0,
                             fontWeight: FontWeight.bold,
                           ),
@@ -350,14 +590,15 @@ class _HomePageState extends State<HomePage> {
                     GestureDetector(
                       onTap: () {
                         novCategoria(49);
+                        toggleErotico();
                       },
-                      child: const Padding(
-                        padding:
-                            EdgeInsets.only(left: 15, right: 15, bottom: 15),
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                            left: 15, right: 15, bottom: 15),
                         child: Text(
                           'Erotico',
                           style: TextStyle(
-                            color: kText,
+                            color: isErotico ? kprimaryColor : kText,
                             fontSize: 24.0,
                             fontWeight: FontWeight.bold,
                           ),
@@ -367,14 +608,15 @@ class _HomePageState extends State<HomePage> {
                     GestureDetector(
                       onTap: () {
                         novCategoria(12);
+                        toggle18();
                       },
-                      child: const Padding(
-                        padding:
-                            EdgeInsets.only(left: 15, right: 15, bottom: 15),
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                            left: 15, right: 15, bottom: 15),
                         child: Text(
                           '+18',
                           style: TextStyle(
-                            color: kText,
+                            color: is18 ? kprimaryColor : kText,
                             fontSize: 24.0,
                             fontWeight: FontWeight.bold,
                           ),

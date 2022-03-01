@@ -84,9 +84,10 @@ class _LoginPageState extends State<LoginPage> {
                       texto: "Digite sua senha",
                       password: true,
                     ),
-                    const Padding(
+                    Padding(
                       padding: EdgeInsets.only(top: 29, bottom: 29),
                       child: Button(
+                        onPressed: () {},
                         text: 'Entrar',
                       ),
                     ),
