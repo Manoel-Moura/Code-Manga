@@ -4,14 +4,16 @@ import 'package:code_manga/consts/colors/colors.dart';
 
 class Button extends StatelessWidget {
   final String text;
-  const Button({Key? key, required this.text}) : super(key: key);
+  const Button({Key? key, required this.text, required this.onPressed})
+      : super(key: key);
+
+  final Function onPressed;
 
   @override
   Widget build(BuildContext context) {
     return TextButton(
       onPressed: () {
-        Navigator.of(context)
-            .push(MaterialPageRoute(builder: (context) => const NavHome()));
+        onPressed();
       },
       child: Text(
         text,

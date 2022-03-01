@@ -1,5 +1,6 @@
 // ignore_for_file: file_names
 import 'package:code_manga/consts/colors/colors.dart';
+import 'package:code_manga/model/user.dart';
 import 'package:code_manga/widgets/input.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -18,6 +19,19 @@ class _CadastroState extends State<Cadastro> {
   TextEditingController emailController = TextEditingController();
   TextEditingController senha1 = TextEditingController();
   TextEditingController senha2 = TextEditingController();
+
+  List<User> usuarios = [];
+
+  fazCadastro(nome, idade, email, senha) {
+    User usuario = User(nome, senha, email, idade);
+    usuarios.add(usuario);
+  }
+
+  imprimeLista() {
+    usuarios.forEach((element) {
+      print(element);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -117,6 +131,12 @@ class _CadastroState extends State<Cadastro> {
                       ),
                     ),
                     Button(
+                      onPressed: () {
+                        fazCadastro(nomeController.text, idadeController.text,
+                            emailController.text, senha1.value);
+                        imprimeLista();
+                        // print(nomeController.text);
+                      },
                       text: 'Criar conta',
                     ),
                   ],
