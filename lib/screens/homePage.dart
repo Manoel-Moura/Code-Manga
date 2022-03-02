@@ -380,7 +380,7 @@ class _HomePageState extends State<HomePage> {
               FutureBuilder(
                 future: ru.recuperaMangas([
                   13,
-                  113138,
+                  // 113138,
                   104565,
                   23390,
                   12,

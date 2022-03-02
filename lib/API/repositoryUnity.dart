@@ -13,11 +13,11 @@ class RepositoryUnity {
     dynamic resposta;
 
     try {
-      await Future.delayed(const Duration(milliseconds: 400), () async {
+      await Future.delayed(const Duration(milliseconds: 500), () async {
         resposta = await dio.get(endpoint + "$id");
       });
     } catch (e) {
-      await Future.delayed(const Duration(milliseconds: 400), () async {
+      await Future.delayed(const Duration(milliseconds: 500), () async {
         resposta = await dio.get(endpoint + '${113138}');
       });
     }
