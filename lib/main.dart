@@ -1,5 +1,6 @@
 import 'package:code_manga/API/repositoryUnity.dart';
 import 'package:code_manga/screens/navHomePage.dart';
+import 'package:code_manga/screens/loginPage.dart';
 import 'package:flutter/material.dart';
 import 'package:code_manga/API/repositoryList.dart';
 import 'package:provider/provider.dart';
@@ -38,7 +39,7 @@ class _CodeMangaState extends State<CodeManga> {
   @override
   Widget build(BuildContext context) {
     //return cadastro();
-    //return loginPage();
+    //return LoginPage();
     //return Resum();
     //return HomePage();
     return const NavHome();

@@ -12,7 +12,7 @@ class RepositoryList {
   final String endpoint = '/v4/manga';
   final String endpointType = '/v4/manga?type=';
   final String endpointGenres = '/v4/manga?genres=';
-  final int time = 1;
+  final int time = 2;
 
   /// Buscando 25 mangas da API
 
