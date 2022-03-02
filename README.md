@@ -27,3 +27,8 @@ Projeto criado na matéria de Programação IV - Bloco V - Ciência da Computaç
 
 - Dart
 - Flutter
+
+# 🚴 Autores
+ - Tchalisson Brenne
+ - Manoel Moura
+ - Alezandre Nery
