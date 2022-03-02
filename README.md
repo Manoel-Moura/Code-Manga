@@ -22,7 +22,16 @@ Projeto criado na matéria de Programação IV - Bloco V - Ciência da Computaç
    # 4° Dê run no app
    # 5° Divirta-se :) 
    ```
-
+# ScreenShots
+| Home Page                          | Home Page                                               |
+| -------------------------------------- | ----------------------------------------------------------- |
+| <img align="center" width="50%" height="50%" src="assets/images/home.jpg" /> | <img align="right" width="50%"  align="center" src="assets/images/homeDxD.jpg" /> |
+| Detalhes                         | Busca                                               |
+| -------------------------------------- | ----------------------------------------------------------- |
+| <img align="center" width="50%" height="50%" src="assets/images/resum.jpg" /> | <img align="right" width="50%"  align="center" src="assets/images/resultadoOnePiece.jpg" /> |
+| Perfil                         | Sobre                                               |
+| -------------------------------------- | ----------------------------------------------------------- |
+| <img align="center" width="50%" height="50%" src="assets/images/perfil.jpg" /> | <img align="right" width="50%"  align="center" src="assets/images/info.jpg" /> |
 # 🔥 Tecnologias utilizadas no projeto
 
 - Dart
