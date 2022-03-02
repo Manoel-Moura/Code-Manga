@@ -1,25 +1,28 @@
-class MangaApiModel {
+// ignore_for_file: file_names
+
+class ListaMangaApiModel {
   Pagination? pagination;
   List<Data>? data;
 
-  MangaApiModel({this.pagination, this.data});
+  ListaMangaApiModel({this.pagination, this.data});
 
-  MangaApiModel.fromJson(Map<String, dynamic> json) {
+  ListaMangaApiModel.fromJson(Map<String, dynamic> json) {
     pagination = json['pagination'] != null
-        ? new Pagination.fromJson(json['pagination'])
+        ? Pagination.fromJson(json['pagination'])
         : null;
     if (json['data'] != null) {
       data = <Data>[];
       json['data'].forEach((v) {
-        data!.add(new Data.fromJson(v));
+        data!.add(Data.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.pagination != null) {
-      data['pagination'] = this.pagination!.toJson();
+    // ignore: prefer_collection_literals
+    final Map<String, dynamic> data = Map<String, dynamic>();
+    if (pagination != null) {
+      data['pagination'] = pagination!.toJson();
     }
     if (this.data != null) {
       data['data'] = this.data!.map((v) => v.toJson()).toList();
@@ -40,9 +43,10 @@ class Pagination {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['last_visible_page'] = this.lastVisiblePage;
-    data['has_next_page'] = this.hasNextPage;
+    // ignore: prefer_collection_literals
+    final Map<String, dynamic> data = Map<String, dynamic>();
+    data['last_visible_page'] = lastVisiblePage;
+    data['has_next_page'] = hasNextPage;
     return data;
   }
 }
@@ -61,7 +65,7 @@ class Data {
   String? status;
   bool? publishing;
   Published? published;
-  double? scored;
+  num? scored;
   int? scoredBy;
   int? rank;
   int? popularity;
@@ -108,8 +112,7 @@ class Data {
   Data.fromJson(Map<String, dynamic> json) {
     malId = json['mal_id'];
     url = json['url'];
-    images =
-        json['images'] != null ? new Images.fromJson(json['images']) : null;
+    images = json['images'] != null ? Images.fromJson(json['images']) : null;
     title = json['title'];
     titleEnglish = json['title_english'];
     titleJapanese = json['title_japanese'];
@@ -120,7 +123,7 @@ class Data {
     status = json['status'];
     publishing = json['publishing'];
     published = json['published'] != null
-        ? new Published.fromJson(json['published'])
+        ? Published.fromJson(json['published'])
         : null;
     scored = json['scored'];
     scoredBy = json['scored_by'];
@@ -133,87 +136,86 @@ class Data {
     if (json['authors'] != null) {
       authors = <Authors>[];
       json['authors'].forEach((v) {
-        authors!.add(new Authors.fromJson(v));
+        authors!.add(Authors.fromJson(v));
       });
     }
     if (json['serializations'] != null) {
       serializations = <Serializations>[];
       json['serializations'].forEach((v) {
-        serializations!.add(new Serializations.fromJson(v));
+        serializations!.add(Serializations.fromJson(v));
       });
     }
     if (json['genres'] != null) {
       genres = <Genres>[];
       json['genres'].forEach((v) {
-        genres!.add(new Genres.fromJson(v));
+        genres!.add(Genres.fromJson(v));
       });
     }
     if (json['explicit_genres'] != null) {
       explicitGenres = <ExplicitGenres>[];
       json['explicit_genres'].forEach((v) {
-        explicitGenres!.add(new ExplicitGenres.fromJson(v));
+        explicitGenres!.add(ExplicitGenres.fromJson(v));
       });
     }
     if (json['themes'] != null) {
       themes = <Themes>[];
       json['themes'].forEach((v) {
-        themes!.add(new Themes.fromJson(v));
+        themes!.add(Themes.fromJson(v));
       });
     }
     if (json['demographics'] != null) {
       demographics = <Demographics>[];
       json['demographics'].forEach((v) {
-        demographics!.add(new Demographics.fromJson(v));
+        demographics!.add(Demographics.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['mal_id'] = this.malId;
-    data['url'] = this.url;
-    if (this.images != null) {
-      data['images'] = this.images!.toJson();
+    // ignore: prefer_collection_literals
+    final Map<String, dynamic> data = Map<String, dynamic>();
+    data['mal_id'] = malId;
+    data['url'] = url;
+    if (images != null) {
+      data['images'] = images!.toJson();
     }
-    data['title'] = this.title;
-    data['title_english'] = this.titleEnglish;
-    data['title_japanese'] = this.titleJapanese;
-    data['title_synonyms'] = this.titleSynonyms;
-    data['type'] = this.type;
-    data['chapters'] = this.chapters;
-    data['volumes'] = this.volumes;
-    data['status'] = this.status;
-    data['publishing'] = this.publishing;
-    if (this.published != null) {
-      data['published'] = this.published!.toJson();
+    data['title'] = title;
+    data['title_english'] = titleEnglish;
+    data['title_japanese'] = titleJapanese;
+    data['title_synonyms'] = titleSynonyms;
+    data['type'] = type;
+    data['chapters'] = chapters;
+    data['volumes'] = volumes;
+    data['status'] = status;
+    data['publishing'] = publishing;
+    if (published != null) {
+      data['published'] = published!.toJson();
     }
-    data['scored'] = this.scored;
-    data['scored_by'] = this.scoredBy;
-    data['rank'] = this.rank;
-    data['popularity'] = this.popularity;
-    data['members'] = this.members;
-    data['favorites'] = this.favorites;
-    data['synopsis'] = this.synopsis;
-    data['background'] = this.background;
-    if (this.authors != null) {
-      data['authors'] = this.authors!.map((v) => v.toJson()).toList();
+    data['scored'] = scored;
+    data['scored_by'] = scoredBy;
+    data['rank'] = rank;
+    data['popularity'] = popularity;
+    data['members'] = members;
+    data['favorites'] = favorites;
+    data['synopsis'] = synopsis;
+    data['background'] = background;
+    if (authors != null) {
+      data['authors'] = authors!.map((v) => v.toJson()).toList();
     }
-    if (this.serializations != null) {
-      data['serializations'] =
-          this.serializations!.map((v) => v.toJson()).toList();
+    if (serializations != null) {
+      data['serializations'] = serializations!.map((v) => v.toJson()).toList();
     }
-    if (this.genres != null) {
-      data['genres'] = this.genres!.map((v) => v.toJson()).toList();
+    if (genres != null) {
+      data['genres'] = genres!.map((v) => v.toJson()).toList();
     }
-    if (this.explicitGenres != null) {
-      data['explicit_genres'] =
-          this.explicitGenres!.map((v) => v.toJson()).toList();
+    if (explicitGenres != null) {
+      data['explicit_genres'] = explicitGenres!.map((v) => v.toJson()).toList();
     }
-    if (this.themes != null) {
-      data['themes'] = this.themes!.map((v) => v.toJson()).toList();
+    if (themes != null) {
+      data['themes'] = themes!.map((v) => v.toJson()).toList();
     }
-    if (this.demographics != null) {
-      data['demographics'] = this.demographics!.map((v) => v.toJson()).toList();
+    if (demographics != null) {
+      data['demographics'] = demographics!.map((v) => v.toJson()).toList();
     }
     return data;
   }
@@ -226,17 +228,18 @@ class Images {
   Images({this.jpg, this.webp});
 
   Images.fromJson(Map<String, dynamic> json) {
-    jpg = json['jpg'] != null ? new Jpg.fromJson(json['jpg']) : null;
-    webp = json['webp'] != null ? new Jpg.fromJson(json['webp']) : null;
+    jpg = json['jpg'] != null ? Jpg.fromJson(json['jpg']) : null;
+    webp = json['webp'] != null ? Jpg.fromJson(json['webp']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.jpg != null) {
-      data['jpg'] = this.jpg!.toJson();
+    // ignore: prefer_collection_literals
+    final Map<String, dynamic> data = Map<String, dynamic>();
+    if (jpg != null) {
+      data['jpg'] = jpg!.toJson();
     }
-    if (this.webp != null) {
-      data['webp'] = this.webp!.toJson();
+    if (webp != null) {
+      data['webp'] = webp!.toJson();
     }
     return data;
   }
@@ -256,10 +259,11 @@ class Jpg {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['image_url'] = this.imageUrl;
-    data['small_image_url'] = this.smallImageUrl;
-    data['large_image_url'] = this.largeImageUrl;
+    // ignore: prefer_collection_literals
+    final Map<String, dynamic> data = Map<String, dynamic>();
+    data['image_url'] = imageUrl;
+    data['small_image_url'] = smallImageUrl;
+    data['large_image_url'] = largeImageUrl;
     return data;
   }
 }
@@ -275,18 +279,19 @@ class Published {
   Published.fromJson(Map<String, dynamic> json) {
     from = json['from'];
     to = json['to'];
-    prop = json['prop'] != null ? new Prop.fromJson(json['prop']) : null;
+    prop = json['prop'] != null ? Prop.fromJson(json['prop']) : null;
     string = json['string'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['from'] = this.from;
-    data['to'] = this.to;
-    if (this.prop != null) {
-      data['prop'] = this.prop!.toJson();
+    // ignore: prefer_collection_literals
+    final Map<String, dynamic> data = Map<String, dynamic>();
+    data['from'] = from;
+    data['to'] = to;
+    if (prop != null) {
+      data['prop'] = prop!.toJson();
     }
-    data['string'] = this.string;
+    data['string'] = string;
     return data;
   }
 }
@@ -298,17 +303,18 @@ class Prop {
   Prop({this.from, this.to});
 
   Prop.fromJson(Map<String, dynamic> json) {
-    from = json['from'] != null ? new From.fromJson(json['from']) : null;
-    to = json['to'] != null ? new From.fromJson(json['to']) : null;
+    from = json['from'] != null ? From.fromJson(json['from']) : null;
+    to = json['to'] != null ? From.fromJson(json['to']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.from != null) {
-      data['from'] = this.from!.toJson();
+    // ignore: prefer_collection_literals
+    final Map<String, dynamic> data = Map<String, dynamic>();
+    if (from != null) {
+      data['from'] = from!.toJson();
     }
-    if (this.to != null) {
-      data['to'] = this.to!.toJson();
+    if (to != null) {
+      data['to'] = to!.toJson();
     }
     return data;
   }
@@ -328,10 +334,11 @@ class From {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['day'] = this.day;
-    data['month'] = this.month;
-    data['year'] = this.year;
+    // ignore: prefer_collection_literals
+    final Map<String, dynamic> data = Map<String, dynamic>();
+    data['day'] = day;
+    data['month'] = month;
+    data['year'] = year;
     return data;
   }
 }
@@ -352,11 +359,12 @@ class Authors {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['mal_id'] = this.malId;
-    data['type'] = this.type;
-    data['name'] = this.name;
-    data['url'] = this.url;
+    // ignore: prefer_collection_literals
+    final Map<String, dynamic> data = Map<String, dynamic>();
+    data['mal_id'] = malId;
+    data['type'] = type;
+    data['name'] = name;
+    data['url'] = url;
     return data;
   }
 }
@@ -377,11 +385,12 @@ class Serializations {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['mal_id'] = this.malId;
-    data['type'] = this.type;
-    data['name'] = this.name;
-    data['url'] = this.url;
+    // ignore: prefer_collection_literals
+    final Map<String, dynamic> data = Map<String, dynamic>();
+    data['mal_id'] = malId;
+    data['type'] = type;
+    data['name'] = name;
+    data['url'] = url;
     return data;
   }
 }
@@ -402,11 +411,12 @@ class Genres {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['mal_id'] = this.malId;
-    data['type'] = this.type;
-    data['name'] = this.name;
-    data['url'] = this.url;
+    // ignore: prefer_collection_literals
+    final Map<String, dynamic> data = Map<String, dynamic>();
+    data['mal_id'] = malId;
+    data['type'] = type;
+    data['name'] = name;
+    data['url'] = url;
     return data;
   }
 }
@@ -427,11 +437,12 @@ class ExplicitGenres {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['mal_id'] = this.malId;
-    data['type'] = this.type;
-    data['name'] = this.name;
-    data['url'] = this.url;
+    // ignore: prefer_collection_literals
+    final Map<String, dynamic> data = Map<String, dynamic>();
+    data['mal_id'] = malId;
+    data['type'] = type;
+    data['name'] = name;
+    data['url'] = url;
     return data;
   }
 }
@@ -452,11 +463,12 @@ class Themes {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['mal_id'] = this.malId;
-    data['type'] = this.type;
-    data['name'] = this.name;
-    data['url'] = this.url;
+    // ignore: prefer_collection_literals
+    final Map<String, dynamic> data = Map<String, dynamic>();
+    data['mal_id'] = malId;
+    data['type'] = type;
+    data['name'] = name;
+    data['url'] = url;
     return data;
   }
 }
@@ -477,11 +489,12 @@ class Demographics {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['mal_id'] = this.malId;
-    data['type'] = this.type;
-    data['name'] = this.name;
-    data['url'] = this.url;
+    // ignore: prefer_collection_literals
+    final Map<String, dynamic> data = Map<String, dynamic>();
+    data['mal_id'] = malId;
+    data['type'] = type;
+    data['name'] = name;
+    data['url'] = url;
     return data;
   }
 }

@@ -1,17 +1,10 @@
-import 'package:code_manga/screens/homePage.dart';
-import 'package:code_manga/screens/loginPage.dart';
-import 'package:code_manga/screens/cadastroPage.dart';
+import 'package:code_manga/API/repositoryUnity.dart';
 import 'package:code_manga/screens/navHomePage.dart';
-import 'package:code_manga/screens/resum.dart';
-
 import 'package:flutter/material.dart';
-import 'package:code_manga/API/repository.dart';
-import 'package:code_manga/API/buscaNome.dart';
-import 'package:code_manga/API/mangaModel.dart';
+import 'package:code_manga/API/repositoryList.dart';
 import 'package:provider/provider.dart';
 
-void main() async {
-  //print('O link de q preciso eh ${await getImageManga(2)}');
+Future main() async {
   runApp(const MyApp());
 }
 
@@ -20,13 +13,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Repository repo = Repository();
-    return Provider(
-      create: (context) => repo,
+    return MultiProvider(
+      providers: [
+        Provider<RepositoryUnity>(create: (context) => RepositoryUnity()),
+        Provider<RepositoryList>(create: (context) => RepositoryList()),
+      ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(primarySwatch: Colors.grey),
-        home: CodeManga(),
+        home: const CodeManga(),
       ),
     );
   }
@@ -46,6 +41,6 @@ class _CodeMangaState extends State<CodeManga> {
     //return loginPage();
     //return Resum();
     //return HomePage();
-    return NavHome();
+    return const NavHome();
   }
 }

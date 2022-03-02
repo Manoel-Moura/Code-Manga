@@ -5,34 +5,36 @@ class Input extends StatelessWidget {
   final IconData icone;
   final String texto;
   final bool password;
+  final TextEditingController myController;
 
   const Input(
       {Key? key,
       required this.icone,
       required this.texto,
-      required this.password})
+      required this.password,
+      required this.myController})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextField(
       // cursorColor: Colors.black,
-
+      controller: myController,
       obscureText: password,
       decoration: InputDecoration(
-        contentPadding: EdgeInsets.all(20), //Largura do TextFild
+        contentPadding: const EdgeInsets.all(20), //Largura do TextFild
         filled: true,
         fillColor: Colors.grey.shade300, //Cor do TextFild
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(30),
-          borderSide: BorderSide(
+          borderSide: const BorderSide(
             color: kBackgroundColor,
             width: 1.0,
           ),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(30),
-          borderSide: BorderSide(
+          borderSide: const BorderSide(
             color: kprimaryColor,
             width: 2.0,
           ),
@@ -42,7 +44,7 @@ class Input extends StatelessWidget {
           color: kIcon,
         ),
         hintText: texto,
-        hintStyle: TextStyle(
+        hintStyle: const TextStyle(
           color: kIcon,
         ),
       ),

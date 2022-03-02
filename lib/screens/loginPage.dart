@@ -1,5 +1,4 @@
-// import 'dart:html';
-
+// ignore_for_file: file_names
 import 'package:code_manga/consts/colors/colors.dart';
 import 'package:code_manga/screens/cadastroPage.dart';
 import 'package:code_manga/widgets/input.dart';
@@ -7,14 +6,17 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:code_manga/widgets/button.dart';
 
-class loginPage extends StatefulWidget {
-  const loginPage({Key? key}) : super(key: key);
+class LoginPage extends StatefulWidget {
+  const LoginPage({Key? key}) : super(key: key);
 
   @override
-  _loginPageState createState() => _loginPageState();
+  _LoginPageState createState() => _LoginPageState();
 }
 
-class _loginPageState extends State<loginPage> {
+class _LoginPageState extends State<LoginPage> {
+  TextEditingController emailController = TextEditingController();
+  TextEditingController senhaController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -57,24 +59,27 @@ class _loginPageState extends State<loginPage> {
                   style: GoogleFonts.notoSans(
                     fontWeight: FontWeight.bold,
                     fontSize: 40,
-                    color: KText,
+                    color: kText,
                   ),
                 ),
               ),
               Container(
                 // margin: const EdgeInsets.only(left: 29, right: 29),
-                margin: EdgeInsets.symmetric(vertical: 29, horizontal: 29),
+                margin:
+                    const EdgeInsets.symmetric(vertical: 29, horizontal: 29),
                 child: Column(
                   children: [
                     Padding(
-                      padding: EdgeInsets.only(bottom: 25),
+                      padding: const EdgeInsets.only(bottom: 25),
                       child: Input(
+                        myController: emailController,
                         icone: Icons.email_rounded,
                         texto: "Digite seu email",
                         password: false,
                       ),
                     ),
                     Input(
+                      myController: senhaController,
                       icone: Icons.lock,
                       texto: "Digite sua senha",
                       password: true,
@@ -82,25 +87,30 @@ class _loginPageState extends State<loginPage> {
                     Padding(
                       padding: EdgeInsets.only(top: 29, bottom: 29),
                       child: Button(
+                        onPressed: () {},
                         text: 'Entrar',
                       ),
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(
+                        const Text(
                           'Ainda não possui conta?',
-                          style: TextStyle(color: KText),
+                          style: TextStyle(color: kText),
                         ),
                         TextButton(
-                            onPressed: () {
-                              Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => cadastro()));
-                            },
-                            child: Text(
-                              'Cadastra-se',
-                              style: TextStyle(color: kprimaryColor),
-                            ))
+                          onPressed: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => const Cadastro(),
+                              ),
+                            );
+                          },
+                          child: const Text(
+                            'Cadastra-se',
+                            style: TextStyle(color: kprimaryColor),
+                          ),
+                        ),
                       ],
                     ),
                   ],
